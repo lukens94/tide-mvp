@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tide — MVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- AUTH -->
+  <div id="auth" class="auth-screen">
+    <div class="auth-card">
+      <div class="auth-brand">
+        <div class="auth-logo">T</div>
+        <span class="h3">Tide</span>
+      </div>
+      <h1 class="h2">Entra in Tide</h1>
+      <p class="lede body-s">La marea del team, in un’unica spiaggia.</p>
+      <form class="auth-form" id="login-form">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" value="luca@thewave.studio" required />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" value="surf1234" required />
+        </div>
+        <div class="field-row">
+          <label class="check"><input type="checkbox" checked /> Ricordami</label>
+          <a href="#" id="link-reset">Password dimenticata?</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Surf in →</button>
+        <div class="auth-sep">oppure</div>
+        <button type="button" class="btn btn-outline btn-block" id="btn-magic">Magic link</button>
+      </form>
+      <p class="body-xs mt-2" style="text-align:center">Demo: entra e usa il toggle Surfer / Board in sidebar.</p>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="app" class="app hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="auth-logo" style="width:32px;height:32px;font-size:1rem">T</div>
+        <span>Tide</span>
+      </div>
+      <nav class="nav" id="nav">
+        <div class="nav-label">Spiaggia</div>
+        <button class="nav-item active" data-page="home"><span class="ico">〜</span> Wave Home</button>
+        <button class="nav-item" data-page="profile"><span class="ico">◉</span> My Beach</button>
+        <button class="nav-item" data-page="leave"><span class="ico">☰</span> Leave Tide</button>
+        <button class="nav-item" data-page="sprints"><span class="ico">▷</span> Sprint Surf</button>
+        <button class="nav-item" data-page="time"><span class="ico">◷</span> Time Current</button>
+        <button class="nav-item" data-page="docs"><span class="ico">▤</span> Doc Shell</button>
+        <button class="nav-item" data-page="daily"><span class="ico">✎</span> Daily Wave</button>
+        <button class="nav-item" data-page="wellbeing"><span class="ico">◎</span> Wellbeing Buoy</button>
+        <div class="nav-label">Ops</div>
+        <button class="nav-item" data-page="meetings"><span class="ico">▣</span> Meetings</button>
+        <button class="nav-item" data-page="polls"><span class="ico">◇</span> Polls <span class="badge-mini">1</span></button>
+        <div class="nav-label admin-only" style="display:none">Board</div>
+        <button class="nav-item admin-only" data-page="users" style="display:none"><span class="ico">♟</span> Users & invites</button>
+        <button class="nav-item admin-only" data-page="ai" style="display:none"><span class="ico">◈</span> AI + Benchmark</button>
+        <button class="nav-item admin-only" data-page="newsletter" style="display:none"><span class="ico">✉</span> Newsletter</button>
+      </nav>
+      <div class="sidebar-user">
+        <div class="avatar" id="user-avatar">LC</div>
+        <div class="user-meta">
+          <strong id="user-name">Luca Valenti</strong>
+          <span id="user-role">Surfer</span>
+        </div>
+      </div>
+      <div class="role-toggle">
+        <button type="button" class="active" id="role-surfer">Surfer</button>
+        <button type="button" id="role-board">Board</button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="row">
+          <button class="icon-btn" id="menu-toggle" aria-label="Menu" style="display:none">☰</button>
+          <div class="breadcrumb">Tide / <strong id="crumb">Wave Home</strong></div>
+        </div>
+        <div class="topbar-actions">
+          <input class="search" type="search" placeholder="Cerca in Tide…" />
+          <div class="notif-wrap">
+            <button class="icon-btn" id="bell" aria-label="Tide Alerts">🔔<span class="dot"></span></button>
+            <div class="notif-panel" id="notif-panel">
+              <header>
+                <strong class="label-m">Tide Alerts</strong>
+                <span class="badge badge-blue">3</span>
+              </header>
+              <div class="notif-list">
+                <div class="notif-item unread"><strong>Daily reminder</strong><br /><span class="body-xs">Compila il Daily Wave di oggi · 2h fa</span></div>
+                <div class="notif-item unread"><strong>Poll aperto</strong><br /><span class="body-xs">Standup remote questa settimana? · 4h fa</span></div>
+                <div class="notif-item unread"><strong>Ferie approvate</strong><br /><span class="body-xs">12–16 ago · ieri</span></div>
+                <div class="notif-item"><strong>Doc caricato</strong><br /><span class="body-xs">Busta paga giugno · 3g fa</span></div>
+              </div>
+              <footer>
+                <a href="#" id="mark-read">Segna tutte lette</a>
+                <a href="#" data-goto="profile">Preferenze</a>
+              </footer>
+            </div>
+          </div>
+          <button class="btn btn-ghost btn-sm" id="logout">Esci</button>
+        </div>
+      </header>
+
+      <main class="content">
+        <!-- HOME -->
+        <section class="page active" id="page-home">
+          <div class="page-header">
+            <div>
+              <h1 class="h1">Ciao Luca 👋</h1>
+              <p class="lede">La marea di oggi è calma — imbraccia la tavola.</p>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-primary" data-goto="daily">Scrivi daily</button>
+              <button class="btn btn-outline" data-goto="leave">Richiedi ferie</button>
+            </div>
+          </div>
+          <div class="grid grid-4 mb-2">
+            <div class="card">
+              <div class="stat-label">Ferie saldo</div>
+              <div class="stat-value">12<span style="font-size:1rem;font-weight:400">g</span></div>
+              <p class="body-xs">Permessi 3g</p>
+            </div>
+            <div class="card">
+              <div class="stat-label">Sprint SP</div>
+              <div class="stat-value">8<span style="font-size:1rem;font-weight:400">/21</span></div>
+              <div class="progress mt-1"><span style="width:38%"></span></div>
+            </div>
+            <div class="card">
+              <div class="stat-label">Ore settimana</div>
+              <div class="stat-value">32<span style="font-size:1rem;font-weight:400">h</span></div>
+              <div class="spark mt-1"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:60%"></i></div>
+            </div>
+            <div class="card" data-goto="wellbeing" style="cursor:pointer">
+              <div class="stat-label">Marea</div>
+              <div class="row" style="align-items:baseline;gap:0.5rem">
+                <span class="score-emoji">😊</span>
+                <span class="stat-value" style="font-size:1.5rem">Calma</span>
+              </div>
+              <p class="body-xs">Boa 4/5 · radar 2.1</p>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div class="card">
+              <div class="card-head">
+                <h3 class="h3">Daily di oggi</h3>
+                <button class="btn btn-sm btn-outline" data-goto="daily">Apri</button>
+              </div>
+              <p class="body-s muted">Client X — Ieri: review homepage. Oggi: form lead. Ostacoli: nessuno.</p>
+              <p class="body-xs mt-1">Salvato · 09:42</p>
+            </div>
+            <div class="card">
+              <div class="card-head"><h3 class="h3">Prossime onde</h3></div>
+              <ul class="stack-sm body-s" style="list-style:none">
+                <li class="row-between"><span>Meeting Sprint Review</span><span class="badge badge-blue">15:00</span></li>
+                <li class="row-between"><span>Poll: Standup remote?</span><span class="badge badge-orange">Aperto</span></li>
+                <li class="row-between admin-only" style="display:none"><span>Ferie pending team</span><span class="badge badge-yellow">2</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="card mt-2 admin-only" style="display:none">
+            <div class="card-head">
+              <h3 class="h3">Marea di squadra</h3>
+              <button class="btn btn-sm btn-outline" data-goto="wellbeing">Apri Wellbeing Buoy</button>
+            </div>
+            <div class="row-between">
+              <div>
+                <p class="stat-label">Media boa team</p>
+                <p class="stat-value" style="font-size:1.5rem">3.8</p>
+              </div>
+              <div class="bars" style="width:50%;height:80px">
+                <div style="height:50%"></div><div style="height:70%"></div><div style="height:60%"></div><div style="height:85%"></div><div style="height:75%"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROFILE -->
+        <section class="page" id="page-profile">
+          <div class="page-header">
+            <div>
+              <h1 class="h1">My Beach</h1>
+              <p class="lede">Il tuo profilo sulla spiaggia.</p>
+            </div>
+          </div>
+          <div class="tabs" data-tabs="profile">
+            <button class="tab active" data-tab="p-info">Profilo</button>
+            <button class="tab" data-tab="p-prefs">Preferenze</button>
+            <button class="tab" data-tab="p-sec">Sicurezza</button>
+          </div>
+          <div class="tab-panel active" id="p-info">
+            <div class="grid grid-2">
+              <div class="card stack" style="align-items:center;text-align:center">
+                <div class="avatar lg">LC</div>
+                <button class="btn btn-outline btn-sm">Cambia avatar</button>
+                <span class="badge badge-blue" id="profile-role-badge">Surfer</span>
+              </div>
+              <div class="card">
+                <form class="stack" id="profile-form">
+                  <div class="grid grid-2">
+                    <div class="field"><label>Nome</label><input value="Luca" /></div>
+                    <div class="field"><label>Cognome</label><input value="Valenti" /></div>
+                  </div>
+                  <div class="field"><label>Bio</label><textarea maxlength="160">Surfer @ The Wave. Frontend & product.</textarea></div>
+                  <div class="grid grid-2">
+                    <div class="field"><label>Telefono</label><input value="+39 333 0000000" /></div>
+                    <div class="field"><label>Slack</label><input value="@luca" /></div>
+                  </div>
+                  <div class="field"><label>Data ingresso</label><input value="2023-03-01" readonly /></div>
+                  <button type="submit" class="btn btn-primary">Salva onda</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="tab-panel" id="p-prefs">
+            <div class="card">
+              <div class="switch-row"><span>Digest email settimanale</span><label class="switch"><input type="checkbox" checked /><span></span></label></div>
+              <div class="switch-row"><span>Notifiche ferie</span><label class="switch"><input type="checkbox" checked /><span></span></label></div>
+              <div class="switch-row"><span>Notifiche poll / meeting</span><label class="switch"><input type="checkbox" checked /><span></span></label></div>
+              <div class="switch-row"><span>Notifiche documenti</span><label class="switch"><input type="checkbox" /><span></span></label></div>
+              <div class="field mt-2">
+                <label>Tema</label>
+                <select>
+                  <option>System</option>
+                  <option selected>Light</option>
+                  <option>Ocean dark</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="tab-panel" id="p-sec">
+            <div class="card">
+              <h3 class="h3 mb-2">Sicurezza</h3>
+              <button class="btn btn-outline" data-modal="modal-password">Cambia password</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- LEAVE -->
+        <section class="page" id="page-leave">
+          <div class="page-header">
+            <div>
+              <h1 class="h1">Leave Tide</h1>
+              <p class="lede">Saldo marea sempre aggiornato.</p>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-primary" data-modal="modal-leave">Nuova richiesta</button>
+            </div>
+          </div>
+          <div class="grid grid-3 mb-2">
+            <div class="card"><div class="stat-label">Ferie</div><div class="stat-value">12g</div></div>
+            <div class="card"><div class="stat-label">Permessi</div><div class="stat-value">3g</div></div>
+            <div class="card"><div class="stat-label">Pending</div><div class="stat-value">1</div></div>
+          </div>
+          <div class="tabs" data-tabs="leave">
+            <button class="tab active" data-tab="l-mine">Le mie richieste</button>
+            <button class="tab" data-tab="l-cal">Calendario</button>
+            <button class="tab admin-only" data-tab="l-inbox" style="display:none">Inbox pending</button>
+            <button class="tab admin-only" data-tab="l-saldi" style="display:none">Saldi team</button>
+          </div>
+          <div class="tab-panel active" id="l-mine">
+            <div class="card table-wrap">
+              <table>
+                <thead><tr><th>Tipo</th><th>Dal</th><th>Al</th><th>Giorni</th><th>Stato</th><th>Note</th></tr></thead>
+                <tbody>
+                  <tr><td>Ferie</td><td>12 ago</td><td>16 ago</td><td>5</td><td><span class="badge badge-green">approved</span></td><td>Vacanze</td></tr>
+                  <tr><td>Permesso</td><td>28 lug</td><td>28 lug</td><td>0.5</td><td><span class="badge badge-yellow">pending</span></td><td>Visita medica</td></tr>
+                  <tr><td>Ferie</td><td>2 giu</td><td>6 giu</td><td>5</td><td><span class="badge badge-red">rejected</span></td><td>Overlap sprint</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="tab-panel" id="l-cal">
+            <div class="card">
+              <p class="label-m mb-2">Luglio 2026</p>
+              <div class="week-grid" style="grid-template-columns:repeat(7,1fr)">
+                <div class="week-day body-xs"><strong>Lun</strong>27</div>
+                <div class="week-day body-xs" style="background:rgba(0,87,255,0.08)"><strong>Mar</strong>28<br /><span class="badge badge-yellow">½</span></div>
+                <div class="week-day body-xs"><strong>Mer</strong>29</div>
+                <div class="week-day body-xs"><strong>Gio</strong>30</div>
+                <div class="week-day body-xs"><strong>Ven</strong>31</div>
+                <div class="week-day body-xs muted"><strong>Sab</strong>1</div>
+                <div class="week-day body-xs muted"><strong>Dom</strong>2</div>
+              </div>
+              <p class="body-xs mt-2">Highlight = tue assenze. In Board vedi anche avatar team per giorno.</p>
+            </div>
+          </div>
+          <div class="tab-panel" id="l-inbox">
+            <div class="card table-wrap">
+              <table>
+                <thead><tr><th>Surfer</th><th>Tipo</th><th>Date</th><th>Giorni</th><th>Azioni</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td class="row"><div class="avatar sm">MR</div> Marta R.</td>
+                    <td>Ferie</td><td>4–8 ago</td><td>5</td>
+                    <td class="row"><button class="btn btn-sm btn-primary toast-btn" data-toast="Ferie approvate">Approve</button><button class="btn btn-sm btn-outline" data-modal="modal-reject">Reject</button></td>
+                  </tr>
+                  <tr>
+                    <td class="row"><div class="avatar sm">GP</div> Gio P.</td>
+                    <td>Permesso</td><td>30 lug</td><td>1</td>
+                    <td class="row"><button class="btn btn-sm btn-primary toast-btn" data-toast="Permesso approvato">Approve</button><button class="btn btn-sm btn-outline" data-modal="modal-reject">Reject</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="tab-panel" id="l-saldi">
+            <div class="card table-wrap">
+              <table>
+                <thead><tr><th>Surfer</th><th>Ferie</th><th>Permessi</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td>Luca V.</td><td>12</td><td>3</td><td><button class="btn btn-sm btn-outline">Aggiusta</button></td></tr>
+                  <tr><td>Marta R.</td><td>8</td><td>2</td><td><button class="btn btn-sm btn-outline">Aggiusta</button></td></tr>
+                  <tr><td>Gio P.</td><td>15</td><td>4</td><td><button class="btn btn-sm btn-outline">Aggiusta</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- SPRINTS -->
+        <section class="page" id="page-sprints">
+          <div class="page-header">
+            <div>
+              <h1 class="h1">Sprint Surf</h1>
+              <p class="lede">10 giorni lavorativi · Planning · Daily scritto · Review.</p>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-primary admin-only" style="display:none" data-modal="modal-sprint">Nuovo sprint</button>
+            </div>
+          </div>
+          <div class="tabs" data-tabs="sprints">
+            <button class="tab active" data-tab="s-active">Active</button>
+            <button class="tab" data-tab="s-past">Past</button>
+            <button class="tab admin-only" data-tab="s-team" style="display:none">Team SP</button>
+          </div>
+          <div class="tab-panel active" id="s-active">
+            <div class="grid grid-2 mb-2">
+              <div class="card">
+                <div class="row-between mb-2">
+                  <span class="badge badge-blue">W30 · 10 gg</span>
+                  <span class="body-xs">14–25 lug</span>
+                </div>
+                <h3 class="h3">Sprint Cresta Estate</h3>
+                <p class="body-s muted mt-1">Goal: ship lead form + polish landing Client X.</p>
+                <div class="row-between mt-2">
+                  <span class="body-xs">SP 8 / 21</span>
+                  <div class="row"><div class="avatar sm">LC</div><div class="avatar sm ok">MR</div></div>
+                </div>
+                <div class="progress mt-1"><span style="width:38%"></span></div>
+              </div>
+              <div class="card">
+                <h3 class="h3">Burndown</h3>
+                <div class="bars mt-2">
+                  <div style="height:95%"></div><div style="height:85%"></div><div style="height:78%"></div>
+                  <div style="height:70%"></div><div style="height:62%"></div><div style="height:55%"></div>
+                  <div style="height:40%"></div>
+                </div>
+                <p class="body-xs mt-1"><a href="#" data-goto="meetings">Planning</a> · <a href="#" data-goto="meetings">Review</a></p>
+              </div>
+            </div>
+            <div class="kanban">
+              <div class="kanban-col">
+                <h4>Todo</h4>
+                <div class="story"><strong class="body-s">Setup analytics</strong><div class="row-between mt-1"><span class="badge">3 SP</span><div class="avatar sm">MR</div></div></div>
+                <div class="story"><strong class="body-s">FAQ copy</strong><div class="row-between mt-1"><span class="badge">2 SP</span><div class="avatar sm">LC</div></div></div>
+              </div>
+              <div class="kanban-col">
+                <h4>Doing</h4>
+                <div class="story"><strong class="body-s">Lead form</strong><div class="row-between mt-1"><span class="badge badge-blue">5 SP</span><div class="avatar sm">LC</div></div>
+                  <select class="mt-1" style="width:100%;padding:0.35rem;border:1px solid var(--tide-light-gray);border-radius:6px;font-size:0.75rem">
+                    <option>Todo</option><option selected>Doing</option><option>Done</option>
+                  </select>
+                </div>
+              </div>
+              <div class="kanban-col">
+                <h4>Done</h4>
+                <div class="story"><strong class="body-s">Hero polish</strong><div class="row-between mt-1"><span class="badge badge-green">3 SP</span><div class="avatar sm">LC</div></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-panel" id="s-past">
+            <div class="card"><p class="muted body-s">Sprint W28 · 5–16 mag · Goal raggiunto · 21/21 SP</p></div>
+          </div>
+          <div class="tab-panel" id="s-team">
+            <div class="card table-wrap">
+              <table>
+                <thead><tr><th>Surfer</th><th>SP assigned</th><th>Done</th><th>%</th></tr></thead>
+                <tbody>
+                  <tr><td>Luca V.</td><td>10</td><td>5</td><td>50%</td></tr>
+                  <tr><td>Marta R.</td><td>8</td><td>3</td><td>38%</td></tr>
+                  <tr><td>Gio P.</td><td>3</td><td>0</td><td>0%</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TIME -->
+        <section class="page" id="page-time">
+          <div class="page-header">
+            <div>
+              <h1 class="h1">Time Current</h1>
+              <p class="lede">Log ore sui progetti T&amp;M.</p>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-primary" data-modal="modal-time">Log ore</button>
+              <button class="btn btn-outline admin-only" style="display:none" data-modal="modal-project">Progetti</button>
+            </div>
+          </div>
+          <div class="tabs" data-tabs="time">
+            <button class="tab active" data-tab="t-week">Questa settimana</button>
+            <button class="tab" data-tab="t-list">Entries</button>
+            <button class="tab admin-only" data-tab="t-report" style="display:none">Report team</button>
+          </div>
+          <div class="tab-panel active" id="t-week">
+            <div class="card mb-2">
+              <div class="row" style="gap:1rem;flex-wrap:wrap">
+                <div class="field" style="min-width:180px"><label>Progetto</label><select><option>Tutti</option><option>Client X T&amp;M</option><option>Internal Wave</option></select></div>
+                <button class="btn btn-outline" style="align-self:flex-end">Questa settimana</button>
+              </div>
+            </div>
+            <div class="week-grid mb-2">
+              <div class="week-day"><strong>Lun</strong><span class="hours">8h</span><p class="body-xs">Client X</p></div>
+              <div class="week-day"><strong>Mar</strong><span class="hours">7.5h</span><p class="body-xs">Client X</p></div>
+              <div class="week-day"><strong>Mer</strong><span class="hours">6h</span><p class="body-xs">Internal</p></div>
+              <div class="week-day"><strong>Gio</strong><span class="hours">8h</span><p class="body-xs">Client X</p></div>
+              <div class="week-day"><strong>Ven</strong><span class="hours">2.5h</span><p class="body-xs">—</p></div>
+              <div class="week-day muted"><strong>Sab</strong><span class="hours">0</span></div>
+              <div class="week-day muted"><strong>Dom</strong><span class="hours">0</span></div>
+            </div>
+            <div class="grid grid-2">
+              <div class="card"><div class="stat-label">Totale settimana</div><div class="stat-value">32h</div></div>
+              <div class="card">
+                <div class="stat-label">Per progetto</div>
+                <div class="stack-sm mt-1 body-s">
+                  <div class="row-between"><span>Client X</span><strong>24h</strong></div>
+                  <div class="progress"><span style="width:75%"></span></div>
+                  <div class="row-between"><span>Internal</span><strong>8h</strong></div>
+                  <div class="progress"><span style="width:25%"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-panel" id="t-list">
+            <div class="card table-wrap">
+              <table>
+                <thead><tr><th>Data</th><th>Progetto</th><th>Ore</th><th>Nota</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td>24 lug</td><td>Client X</td><td>8</td><td>Lead form</td><td><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+                  <tr><td>23 lug</td><td>Client X</td><td>7.5</td><td>QA landing</td><td><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+                  <tr><td>22 lug</td><td>Internal</td><td>6</td><td>Tide wireframes</td><td><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="tab-panel" id="t-report">
+            <div class="card">
+              <div class="row-between mb-2">
+                <h3 class="h3">Report team</h3>
+                <button class="btn btn-outline btn-sm toast-btn" data-toast="Export CSV avviato (demo)">Export CSV</button>
+              </div>
+              <table>
+                <thead><tr><th>Surfer</th><th>Progetto</th><th>Ore</th></tr></thead>
+                <tbody>
+                  <tr><td>Luca V.</td><td>Client X</td><td>24</td></tr>
+                  <tr><td>Marta R.</td><td>Client X</td><td>30</td></tr>
+                  <tr><td>Gio P.</td><td>Internal</td><td>12</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- DOCS -->
+        <section class="page" id="page-docs">
+          <div class="page-header">
+            <div>
+              <h1 class="h1">Doc Shell</h1>
+              <p class="lede">Buste paga, contratti e documenti personali.</p>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-primary admin-only" style="display:none" data-modal="modal-upload">Upload</button>
+            </div>
+          </div>
+          <div class="docs-layout">
+            <div class="card folder-list">
+              <button class="folder-item active">📁 Buste paga</button>
+              <button class="folder-item">📁 Documenti personali</button>
+              <button class="folder-item">📁 Contratti</button>
+              <button class="folder-item">📁 Shared team</button>
+            </div>
+            <div class="card table-wrap">
+              <p class="body-xs mb-2">Buste paga /</p>
+              <table>
+                <thead><tr><th>Nome</th><th>Tipo</th><th>Data</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td>busta_2026_06.pdf</td><td><span class="badge">PDF</span></td><td>5 lug</td><td><button class="btn btn-sm btn-outline toast-btn" data-toast="Download avviato (demo)">Download</button></td></tr>
+                  <tr><td>busta_2026_05.pdf</td><td><span class="badge">PDF</span></td><td>5 giu</td><td><button class="btn btn-sm btn-outline toast-btn" data-toast="Download avviato (demo)">Download</button></td></tr>
+                </tbody>
+              </table>
+              <p class="body-xs mt-2">Surfer: solo download. Board: upload + soft delete.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- DAILY -->
+        <section class="page" id="page-daily">
+          <div class="page-header">
+            <div>
+              <h1 class="h1">Daily Wave</h1>
+              <p class="lede">Daily scritto · asincrono · la tua marea + tre punti Scrum.</p>
+            </div>
+            <div class="page-actions">
+              <input type="date" value="2026-07-27" style="padding:0.5rem;border:1px solid var(--tide-light-gray);border-radius:8px" />
+              <button class="btn btn-outline toast-btn" data-toast="Copiato da ieri (demo)">Copia da ieri</button>
+            </div>
+          </div>
+          <div class="tabs" data-tabs="daily">
+            <button class="tab active" data-tab="d-today">Oggi</button>
+            <button class="tab" data-tab="d-hist">Storico</button>
+            <button class="tab admin-only" data-tab="d-feed" style="display:none">Feed team</button>
+          </div>
+          <div class="tab-panel active" id="d-today">
+            <div class="card stack mb-2" style="border-color:rgba(0,87,255,0.25);background:rgba(0,87,255,0.04)">
+              <div class="row-between">
+                <div>
+                  <h3 class="h3">La mia marea</h3>
+                  <p class="body-xs muted">Come stai oggi? La tua voce — non è la boa del board.</p>
+                </div>
+                <span class="badge badge-green">Salvata · 09:15</span>
+              </div>
+              <div>
+                <p class="label-m mb-2">Umore oggi</p>
+                <div class="score-pick" id="mood-daily">
+                  <button type="button" title="Serve una mano">1</button>
+                  <button type="button" title="Vento contrario">2</button>
+                  <button type="button" title="Marea piatta">3</button>
+                  <button type="button" title="Buona energia" class="active">4</button>
+                  <button type="button" title="Marea alta">5</button>
+                </div>
+                <p class="body-xs mt-1">1 Serve una mano · 3 Marea piatta · 5 Marea alta</p>
+              </div>
+              <div class="field">
+                <label>Qualcosa da aggiungere? <span class="body-xs muted">(opzionale)</span></label>
+                <textarea maxlength="160" placeholder="Es. carico ok ma serve focus su un task…">Carico gestibile, buona energia per chiudere il form.</textarea>
+              </div>
+            </div>
+            <div class="card stack">
+              <div class="row-between"><h3 class="h3">Client X</h3><span class="badge badge-green">Salvato · 09:42</span></div>
+              <div class="field"><label>Ieri ho…</label><textarea>Review homepage + fix CTA mobile.</textarea></div>
+              <div class="field"><label>Nelle prossime 24h…</label><textarea>Completare lead form e handoff QA.</textarea></div>
+              <div class="field"><label>Ostacoli / blocchi</label><textarea>Attesa copy legal sul disclaimer.</textarea></div>
+              <div class="row">
+                <button class="btn btn-primary toast-btn" data-toast="Daily e marea salvati">Salva tutto</button>
+                <button class="btn btn-outline" data-goto="wellbeing">Vedi Wellbeing Buoy</button>
+                <button class="btn btn-outline" data-goto="time">Vai a Time log</button>
+              </div>
+            </div>
+          </div>
+          <div class="tab-panel" id="d-hist">
+            <div class="card stack">
+              <details open>
+                <summary class="label-m">Ven 24 lug · <span class="badge badge-blue">4 · Buona energia</span></summary>
+                <p class="body-s mt-1 muted">Ieri: hero polish. Oggi: analytics. Ostacoli: nessuno.</p>
+              </details>
+              <details>
+                <summary class="label-m">Gio 23 lug · <span class="badge">3 · Marea piatta</span></summary>
+                <p class="body-s mt-1 muted">Ieri: QA. Oggi: form. Ostacoli: API lenta.</p>
+              </details>
+            </div>
+          </div>
+          <div class="tab-panel" id="d-feed">
+            <div class="card stack">
+              <div class="row" style="gap:1rem;flex-wrap:wrap">
+                <div class="field"><label>Surfer</label><select><option>Tutti</option><option>Luca</option><option>Marta</option></select></div>
+                <div class="field"><label>Progetto</label><select><option>Tutti</option><option>Client X</option></select></div>
+              </div>
+              <div class="row" style="align-items:flex-start">
+                <div class="avatar">LC</div>
+                <div>
+                  <div class="row" style="gap:0.5rem;flex-wrap:wrap">
+                    <strong class="body-s">Luca · Client X</strong>
+                    <span class="badge badge-blue">4 · Buona energia</span>
+                  </div>
+                  <p class="body-s muted">Ostacolo: attesa copy legal.</p>
+                </div>
+              </div>
+              <div class="row" style="align-items:flex-start">
+                <div class="avatar ok">MR</div>
+                <div>
+                  <div class="row" style="gap:0.5rem;flex-wrap:wrap">
+                    <strong class="body-s">Marta · Client X</strong>
+                    <span class="badge">3 · Marea piatta</span>
+                  </div>
+                  <p class="body-s muted">Oggi: FAQ + setup analytics.</p>
+                </div>
+              </div>
+              <div class="row" style="align-items:flex-start">
+                <div class="avatar warn">GP</div>
+                <div>
+                  <div class="row" style="gap:0.5rem;flex-wrap:wrap">
+                    <strong class="body-s">Gio · Client X</strong>
+                    <span class="badge badge-orange">2 · Vento contrario</span>
+                  </div>
+                  <p class="body-s muted">Ostacolo: troppe riunioni, serve focus.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- WELLBEING BUOY (boa + segnali marea unificati) -->
+        <section class="page" id="page-wellbeing">
+          <div class="page-header">
+            <div>
+              <h1 class="h1">Wellbeing Buoy</h1>
+              <p class="lede">La tua marea, la boa del board e i segnali automatici — ascolto umano e radar, in un unico posto.</p>
+            </div>
+          </div>
+          <div class="tabs" data-tabs="wellbeing">
+            <button class="tab active" data-tab="w-mine">La mia marea</button>
+            <button class="tab admin-only" data-tab="w-team" style="display:none">Marea di squadra</button>
+            <button class="tab admin-only" data-tab="w-compila" style="display:none">Lascia la boa</button>
+            <button class="tab admin-only" data-tab="w-storico" style="display:none">Storico</button>
+            <button class="tab admin-only" data-tab="w-ai" style="display:none">Lettura oceano</button>
+          </div>
+
+          <!-- SURFER: vista personale unificata -->
+          <div class="tab-panel active" id="w-mine">
+            <div class="alert alert-soft mb-2">
+              <span>🛟</span>
+              <div class="body-s">Solo tu e il board vedono questi dati. Niente classifiche in squadra — la tua marea, non un confronto con gli altri.</div>
+            </div>
+            <div class="grid grid-3 mb-2">
+              <div class="card" style="border-color:rgba(0,87,255,0.2)">
+                <p class="stat-label">La mia marea</p>
+                <p class="score-big" style="color:var(--tide-blue)">4</p>
+                <p class="label-m mt-1">Buona energia</p>
+                <p class="body-xs muted mt-1">Oggi · dal Daily Wave</p>
+                <p class="body-s mt-2">“Carico gestibile, buona energia per chiudere il form.”</p>
+                <button class="btn btn-sm btn-outline mt-2" data-goto="daily">Aggiorna nel daily</button>
+              </div>
+              <div class="card">
+                <p class="stat-label">La boa del board</p>
+                <p class="score-big" style="color:var(--tide-blue)">4</p>
+                <p class="label-m mt-1">Buona energia</p>
+                <p class="body-s muted mt-1">15 lug · da Board Wave</p>
+                <p class="body-s mt-2">“Buona energia, carico gestibile. Continuiamo così dopo l’1:1.”</p>
+                <span class="badge badge-blue mt-1">Onda regolare</span>
+              </div>
+              <div class="card">
+                <p class="stat-label">Segnali della marea</p>
+                <p class="score-big" style="color:var(--tide-blue)">2.1</p>
+                <p class="label-m mt-1" style="color:var(--tide-dark-blue)">Marea calma</p>
+                <p class="body-xs muted mt-1">Da ore, ferie, daily e umore — aggiornato ogni notte.</p>
+                <div class="alert alert-soft mt-2" style="font-size:0.8rem;padding:0.5rem">💡 Prendi un’onda di riposo — ferie residue alte.</div>
+              </div>
+            </div>
+            <div class="grid grid-4 mb-2">
+              <div class="card"><p class="stat-label">Ore settimana</p><p class="body-s"><strong>32h</strong> — nella media</p></div>
+              <div class="card"><p class="stat-label">Ferie residue</p><p class="body-s"><strong>12g</strong> — buone</p></div>
+              <div class="card"><p class="stat-label">Daily</p><p class="body-s"><strong>4/5</strong> giorni · marea 4/5</p></div>
+              <div class="card"><p class="stat-label">Ultima boa board</p><p class="body-s"><strong>15 lug</strong> · Buona energia</p></div>
+            </div>
+            <div class="grid grid-2 mb-2">
+              <div class="card">
+                <h3 class="h3 mb-2">Storico mia marea</h3>
+                <div class="stack-sm">
+                  <div class="row-between" style="padding:0.5rem 0;border-bottom:1px solid var(--tide-light-gray)">
+                    <div><strong class="body-s">Oggi</strong> · <span class="badge badge-blue">4 · Buona energia</span></div>
+                    <span class="body-xs muted">Daily</span>
+                  </div>
+                  <div class="row-between" style="padding:0.5rem 0;border-bottom:1px solid var(--tide-light-gray)">
+                    <div><strong class="body-s">24 lug</strong> · <span class="badge badge-blue">4</span></div>
+                    <span class="body-xs muted">Daily</span>
+                  </div>
+                  <div class="row-between" style="padding:0.5rem 0">
+                    <div><strong class="body-s">23 lug</strong> · <span class="badge">3 · Marea piatta</span></div>
+                    <span class="body-xs muted">Daily</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <h3 class="h3 mb-2">Storico boa board</h3>
+                <div class="stack-sm">
+                  <div class="row-between" style="padding:0.5rem 0;border-bottom:1px solid var(--tide-light-gray)">
+                    <div><strong class="body-s">15 lug</strong> · <span class="badge badge-blue">4 · Buona energia</span></div>
+                    <span class="body-xs muted">1:1 mensile</span>
+                  </div>
+                  <div class="row-between" style="padding:0.5rem 0;border-bottom:1px solid var(--tide-light-gray)">
+                    <div><strong class="body-s">1 lug</strong> · <span class="badge">3 · Marea piatta</span></div>
+                    <span class="body-xs muted">Spot check</span>
+                  </div>
+                  <div class="row-between" style="padding:0.5rem 0">
+                    <div><strong class="body-s">15 giu</strong> · <span class="badge badge-green">5 · Marea alta</span></div>
+                    <span class="body-xs muted">1:1 mensile</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="body-xs">La tua marea la aggiorni ogni giorno nel <a href="#" data-goto="daily">Daily Wave</a>. La boa la lascia il board dopo un ascolto — sono due voci diverse.</p>
+          </div>
+
+          <!-- BOARD: marea di squadra -->
+          <div class="tab-panel" id="w-team">
+            <div class="grid grid-3 mb-2">
+              <div class="card">
+                <p class="stat-label">Media marea team</p>
+                <p class="stat-value">3.5</p>
+                <p class="body-xs muted">Self-report oggi</p>
+              </div>
+              <div class="card">
+                <p class="stat-label">Media boa team</p>
+                <p class="stat-value">3.3</p>
+                <div class="bars mt-2" style="height:80px">
+                  <div style="height:50%"></div><div style="height:70%"></div><div style="height:60%"></div>
+                  <div style="height:85%"></div><div style="height:75%"></div>
+                </div>
+                <p class="body-xs mt-1">Trend ultimi 30 giorni</p>
+              </div>
+              <div class="card">
+                <p class="stat-label">Segnali attivi</p>
+                <ul class="stack-sm body-s mt-1" style="list-style:none">
+                  <li class="row-between"><span>1 surfer sopra soglia radar</span><span class="badge badge-orange">⚠</span></li>
+                  <li class="row-between"><span>Gio: marea 2 oggi</span><span class="badge badge-orange">⚠</span></li>
+                  <li class="row-between"><span>2 surfer senza boa da 30+ gg</span><span class="badge badge-yellow">!</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="card mb-2">
+              <h3 class="h3 mb-2">Radar squadra</h3>
+              <div class="heat-list">
+                <div class="heat-row">
+                  <div class="row"><div class="avatar sm">LC</div> Luca</div>
+                  <div class="heat-bar"><span style="width:40%;background:var(--tide-blue)"></span></div>
+                  <span class="badge badge-blue">2.1</span>
+                </div>
+                <div class="heat-row">
+                  <div class="row"><div class="avatar sm ok">MR</div> Marta</div>
+                  <div class="heat-bar"><span style="width:55%;background:var(--tide-yellow)"></span></div>
+                  <span class="badge badge-yellow">2.8</span>
+                </div>
+                <div class="heat-row">
+                  <div class="row"><div class="avatar sm warn">GP</div> Gio</div>
+                  <div class="heat-bar"><span style="width:78%;background:var(--tide-orange)"></span></div>
+                  <span class="badge badge-orange">3.9 ⚠</span>
+                </div>
+              </div>
+              <div class="alert alert-warn mt-2">Gio sopra soglia — programma un 1:1 o una mezza giornata di riva.</div>
+            </div>
+            <div class="card table-wrap">
+              <table>
+                <thead><tr><th>Surfer</th><th>Marea oggi</th><th>Boa</th><th>Radar</th><th>Stato</th><th>Ultima boa</th><th></th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td>Luca V.</td><td><span class="badge badge-blue">4</span></td><td>4 ↑</td><td>2.1</td><td><span class="badge badge-blue">Onda regolare</span></td><td>15 lug</td>
+                    <td><button class="btn btn-sm btn-ghost" data-tab-jump="w-compila">Boa</button></td>
+                  </tr>
+                  <tr>
+                    <td>Marta R.</td><td><span class="badge">3</span></td><td>3 →</td><td>2.8</td><td><span class="badge">Marea piatta</span></td><td>14 lug</td>
+                    <td><button class="btn btn-sm btn-ghost" data-tab-jump="w-compila">Boa</button></td>
+                  </tr>
+                  <tr>
+                    <td>Gio P.</td><td><span class="badge badge-orange">2</span></td><td>2 ↓</td><td>3.9</td><td><span class="badge badge-orange">Mare mosso</span></td><td>10 lug</td>
+                    <td><button class="btn btn-sm btn-primary" data-tab-jump="w-compila">Boa</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- BOARD: compila boa -->
+          <div class="tab-panel" id="w-compila">
+            <div class="card stack" style="max-width:560px">
+              <p class="body-s muted">Check-in umano dopo 1:1 o spot check — non sostituisce il radar, lo completa.</p>
+              <div class="field"><label>Surfer</label><select><option>Luca Valenti</option><option>Marta Rossi</option><option selected>Gio Bianchi</option></select></div>
+              <div class="field">
+                <label>Tipo check-in</label>
+                <select><option>1:1 mensile</option><option>Follow-up post-sprint</option><option>Spot check</option></select>
+              </div>
+              <div>
+                <p class="label-m mb-2">Boa 1–5</p>
+                <div class="score-pick" id="score-pick">
+                  <button type="button" title="Serve una mano">1</button>
+                  <button type="button" title="Vento contrario">2</button>
+                  <button type="button" title="Marea piatta">3</button>
+                  <button type="button" title="Buona energia">4</button>
+                  <button type="button" title="Marea alta">5</button>
+                </div>
+                <p class="body-xs mt-1">1 Serve una mano · 3 Marea piatta · 5 Marea alta</p>
+              </div>
+              <div class="field">
+                <label>Stato lavorativo</label>
+                <select>
+                  <option>Onda regolare</option>
+                  <option>Cresta impegnativa</option>
+                  <option selected>Mare mosso — serve supporto</option>
+                  <option>In riposo / ferie</option>
+                  <option>Bloccato su qualcosa</option>
+                </select>
+              </div>
+              <div class="field"><label>Note</label><textarea placeholder="Cosa va bene? Cosa pesa? Azione concordata?">Carico alto su Client X. Concordato: ridurre SP prossimo sprint + mezza giornata ferie.</textarea></div>
+              <div class="field"><label>Data</label><input type="date" value="2026-07-27" /></div>
+              <div class="switch-row" style="border:none;padding:0">
+                <span>Notifica il surfer (Tide Alert)</span>
+                <label class="switch"><input type="checkbox" checked /><span></span></label>
+              </div>
+              <button class="btn btn-primary toast-btn" data-toast="Boa lasciata per Gio">Lascia la boa</button>
+            </div>
+          </div>
+
+          <!-- BOARD: storico -->
+          <div class="tab-panel" id="w-storico">
+            <div class="card stack">
+              <div class="field" style="max-width:280px"><label>Surfer</label><select><option>Luca Valenti</option><option>Marta Rossi</option><option>Gio Bianchi</option></select></div>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>Data</th><th>Boa</th><th>Stato</th><th>Note</th><th>Da</th></tr></thead>
+                  <tbody>
+                    <tr><td>15 lug</td><td>4</td><td>Onda regolare</td><td>Buona energia, carico gestibile.</td><td>Board</td></tr>
+                    <tr><td>1 lug</td><td>3</td><td>Marea piatta</td><td>Post-sprint intenso, monitorare.</td><td>Board</td></tr>
+                    <tr><td>15 giu</td><td>5</td><td>Onda regolare</td><td>Marea alta, ottimo clima.</td><td>Board</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- BOARD: AI -->
+          <div class="tab-panel" id="w-ai">
+            <div class="card">
+              <h3 class="h3">Lettura dell’oceano</h3>
+              <p class="body-s muted mt-1 mb-2">Summary su dati aggregati del team · benchmark interno vs media 30gg. Non sostituisce l’ascolto umano.</p>
+              <button class="btn btn-primary toast-btn" data-toast="Analisi generata (demo)">Genera lettura dell’oceano</button>
+              <div class="alert alert-soft mt-2">
+                <div>
+                  <strong>Clima squadra:</strong> energia media stabile. Un segnale di carico su Gio (ore↑ + boa↓).
+                  Benchmark: media boa team 3.3 vs 3.7 (30gg). Suggerimento: riequilibrare SP sprint e check ferie residue.
+                </div>
+              </div>
+              <p class="body-xs mt-1">Disclaimer: insight assistito, non valutazione HR.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- MEETINGS -->
+        <section class="page" id="page-meetings">
+          <div class="page-header">
+            <div>
+              <h1 class="h1">Meeting Board</h1>
+              <p class="lede">Agenda, note live e action item.</p>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-primary admin-only" style="display:none" data-modal="modal-meeting">Nuovo meeting</button>
+            </div>
+          </div>
+          <div class="grid grid-2 mb-2">
+            <div class="card">
+              <div class="row-between"><h3 class="h3">Sprint Review W30</h3><span class="badge badge-orange">Scheduled</span></div>
+              <p class="body-xs mt-1">Oggi · 15:00 · Luca, Marta, Board</p>
+            </div>
+            <div class="card">
+              <div class="row-between"><h3 class="h3">1:1 boa</h3><span class="badge badge-green">Done</span></div>
+              <p class="body-xs mt-1">22 lug · action item chiuse</p>
+            </div>
+          </div>
+          <div class="split">
+            <div class="card">
+              <h3 class="h3 mb-2">Agenda</h3>
+              <ul class="check-list">
+                <li><input type="checkbox" checked /> Demo incremento Client X</li>
+                <li><input type="checkbox" /> Blocchi aperti</li>
+                <li><input type="checkbox" /> Input next planning</li>
+              </ul>
+              <div class="row mt-2 admin-only" style="display:none">
+                <input placeholder="Nuovo item…" style="flex:1;padding:0.5rem;border:1px solid var(--tide-light-gray);border-radius:8px" />
+                <button class="btn btn-sm btn-outline">Add</button>
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="h3 mb-2">Note & action</h3>
+              <textarea placeholder="Note live…" style="width:100%;min-height:100px;padding:0.65rem;border:1px solid var(--tide-light-gray);border-radius:8px;margin-bottom:0.75rem">Demo ok. Legal copy ancora pending.</textarea>
+              <table>
+                <thead><tr><th>Action</th><th>Owner</th><th>Done</th></tr></thead>
+                <tbody>
+                  <tr><td>Sbloccare copy legal</td><td>Luca</td><td><input type="checkbox" /></td></tr>
+                  <tr><td>Prep next planning</td><td>Board</td><td><input type="checkbox" checked /></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- POLLS -->
+        <section class="page" id="page-polls">
+          <div class="page-header">
+            <div>
+              <h1 class="h1">Polling Manager</h1>
+              <p class="lede">Sondaggi flash per il team.</p>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-primary admin-only" style="display:none" data-modal="modal-poll">Crea poll</button>
+            </div>
+          </div>
+          <div class="tabs" data-tabs="polls">
+            <button class="tab active" data-tab="po-open">Aperti</button>
+            <button class="tab" data-tab="po-closed">Chiusi</button>
+          </div>
+          <div class="tab-panel active" id="po-open">
+            <div class="card" style="max-width:520px">
+              <div class="row-between mb-2">
+                <h3 class="h3">Standup remote questa settimana?</h3>
+                <span class="badge badge-orange">Aperto</span>
+              </div>
+              <p class="body-xs mb-2">Scade ven · 18:00 · nominativo</p>
+              <label class="poll-opt selected"><input type="radio" name="poll1" checked /> Sì, remote</label>
+              <label class="poll-opt"><input type="radio" name="poll1" /> No, in sede</label>
+              <label class="poll-opt"><input type="radio" name="poll1" /> Ibrido</label>
+              <button class="btn btn-primary mt-1 toast-btn" data-toast="Voto inviato">Invia voto</button>
+              <div class="mt-2 admin-only" style="display:none">
+                <p class="label-m mb-2">Risultati live</p>
+                <p class="body-s">Sì 60%</p><div class="poll-bar"><span style="width:60%"></span></div>
+                <p class="body-s mt-1">No 20%</p><div class="poll-bar"><span style="width:20%"></span></div>
+                <p class="body-s mt-1">Ibrido 20%</p><div class="poll-bar"><span style="width:20%"></span></div>
+                <button class="btn btn-outline btn-sm mt-2 toast-btn" data-toast="Poll chiuso">Chiudi poll</button>
+              </div>
+            </div>
+          </div>
+          <div class="tab-panel" id="po-closed">
+            <div class="card"><p class="body-s muted">“Pranzo team venerdì?” · chiuso · Sì 80%</p></div>
+          </div>
+        </section>
+
+        <!-- USERS (admin) -->
+        <section class="page" id="page-users">
+          <div class="page-header">
+            <div>
+              <h1 class="h1">Users & invites</h1>
+              <p class="lede">Gestisci surfer e ruoli Board.</p>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-primary" data-modal="modal-invite">Invita surfer</button>
+            </div>
+          </div>
+          <div class="card table-wrap">
+            <div class="row mb-2" style="gap:0.75rem;flex-wrap:wrap">
+              <input class="search" placeholder="Cerca…" style="display:block" />
+              <select style="padding:0.45rem;border:1px solid var(--tide-light-gray);border-radius:8px"><option>Tutti i ruoli</option><option>Surfer</option><option>Board</option></select>
+            </div>
+            <table>
+              <thead><tr><th></th><th>Nome</th><th>Email</th><th>Role</th><th>Status</th><th></th></tr></thead>
+              <tbody>
+                <tr><td><div class="avatar sm">LC</div></td><td>Luca Valenti</td><td>luca@thewave.studio</td><td><span class="badge badge-blue">user</span></td><td><span class="badge badge-green">active</span></td><td><button class="btn btn-sm btn-ghost">Azioni</button></td></tr>
+                <tr><td><div class="avatar sm">MR</div></td><td>Marta Rossi</td><td>marta@thewave.studio</td><td><span class="badge badge-blue">user</span></td><td><span class="badge badge-green">active</span></td><td><button class="btn btn-sm btn-ghost">Azioni</button></td></tr>
+                <tr><td><div class="avatar sm">BW</div></td><td>Board Wave</td><td>board@thewave.studio</td><td><span class="badge badge-yellow">admin</span></td><td><span class="badge badge-green">active</span></td><td><button class="btn btn-sm btn-ghost">Azioni</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- AI -->
+        <section class="page" id="page-ai">
+          <div class="page-header">
+            <div>
+              <h1 class="h1">AI + Benchmark</h1>
+              <p class="lede">Analisi dati team e confronto vs storico interno.</p>
+            </div>
+          </div>
+          <div class="card stack" style="max-width:640px">
+            <div class="field"><label>Range</label><select><option>Ultimi 30 giorni</option><option>Questo sprint</option><option>Questo mese</option></select></div>
+            <div class="field">
+              <label>Metriche</label>
+              <div class="stack-sm body-s">
+                <label class="check"><input type="checkbox" checked /> Boa / segnali marea</label>
+                <label class="check"><input type="checkbox" checked /> Ore</label>
+                <label class="check"><input type="checkbox" checked /> Ferie</label>
+                <label class="check"><input type="checkbox" /> Story points</label>
+              </div>
+            </div>
+            <button class="btn btn-primary toast-btn" data-toast="Analisi avviata (demo)">Analizza</button>
+            <div class="alert alert-soft">
+              <div>
+                <strong>Output</strong>
+                <ul style="margin:0.5rem 0 0 1.1rem" class="body-s">
+                  <li>Boa media ↓ 0.4 vs mese precedente</li>
+                  <li>Ore T&amp;M concentrate su Client X (68%)</li>
+                  <li>Ferie residue medie 10g — sano</li>
+                </ul>
+              </div>
+            </div>
+            <div class="bars"><div style="height:70%"></div><div style="height:65%"></div><div style="height:55%"></div><div style="height:60%"></div></div>
+            <p class="body-xs">Disclaimer privacy: dati aggregati / semi-aggregati.</p>
+          </div>
+        </section>
+
+        <!-- NEWSLETTER -->
+        <section class="page" id="page-newsletter">
+          <div class="page-header">
+            <div>
+              <h1 class="h1">Newsletter / Digest</h1>
+              <p class="lede">Comunicazioni board ai surfer con digest ON.</p>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div class="card stack">
+              <div class="field"><label>Oggetto</label><input value="Marea della settimana" /></div>
+              <div class="field"><label>Body</label><textarea rows="6">Ciao surfer,
+
+Questa settimana: Sprint Review venerdì, poll remote, e un reminder sulle ferie residue.
+
+Se fa bene a The Wave, dillo.
+
+— Board</textarea></div>
+              <div class="switch-row"><span>Solo chi ha digest ON</span><label class="switch"><input type="checkbox" checked /><span></span></label></div>
+              <div class="row">
+                <button class="btn btn-outline toast-btn" data-toast="Anteprima aperta (demo)">Anteprima</button>
+                <button class="btn btn-primary toast-btn" data-toast="Newsletter inviata (demo)">Invia</button>
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="h3 mb-2">Ultimi invii</h3>
+              <table>
+                <thead><tr><th>Oggetto</th><th>Data</th><th>Stato</th></tr></thead>
+                <tbody>
+                  <tr><td>Marea W29</td><td>17 lug</td><td><span class="badge badge-green">sent</span></td></tr>
+                  <tr><td>Benvenuto estate</td><td>1 giu</td><td><span class="badge badge-green">sent</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+  <div class="modal-backdrop" id="modal-leave">
+    <div class="modal">
+      <h3 class="h3">Nuova richiesta</h3>
+      <p class="body-xs mb-2">Invia sulla cresta.</p>
+      <div class="stack">
+        <div class="field"><label>Tipo</label><select><option>Ferie</option><option>Permesso</option></select></div>
+        <div class="grid grid-2">
+          <div class="field"><label>Dal</label><input type="date" /></div>
+          <div class="field"><label>Al</label><input type="date" /></div>
+        </div>
+        <div class="field"><label>Unità</label><select><option>Giornata intera</option><option>Mezza — mattina</option><option>Mezza — pomeriggio</option></select></div>
+        <div class="field"><label>Note</label><textarea></textarea></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost modal-close">Annulla</button>
+        <button class="btn btn-primary toast-btn modal-close" data-toast="Richiesta inviata">Invia sulla cresta</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-reject">
+    <div class="modal">
+      <h3 class="h3">Rifiuta richiesta</h3>
+      <div class="field mt-2"><label>Motivo</label><textarea placeholder="Spiega al surfer…"></textarea></div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost modal-close">Annulla</button>
+        <button class="btn btn-danger toast-btn modal-close" data-toast="Richiesta rifiutata">Rifiuta</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-password">
+    <div class="modal">
+      <h3 class="h3">Cambia password</h3>
+      <div class="stack mt-2">
+        <div class="field"><label>Password attuale</label><input type="password" /></div>
+        <div class="field"><label>Nuova password</label><input type="password" /></div>
+        <div class="field"><label>Conferma</label><input type="password" /></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost modal-close">Annulla</button>
+        <button class="btn btn-primary toast-btn modal-close" data-toast="Password aggiornata">Salva</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-time">
+    <div class="modal">
+      <h3 class="h3">Log ore</h3>
+      <div class="stack mt-2">
+        <div class="field"><label>Progetto T&amp;M</label><select><option>Client X T&amp;M</option><option>Internal Wave</option></select></div>
+        <div class="field"><label>Data</label><input type="date" value="2026-07-27" /></div>
+        <div class="field"><label>Ore</label><input type="number" step="0.5" value="8" /></div>
+        <div class="field"><label>Nota</label><textarea></textarea></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost modal-close">Annulla</button>
+        <button class="btn btn-primary toast-btn modal-close" data-toast="Ore salvate">Salva</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-sprint">
+    <div class="modal">
+      <h3 class="h3">Nuovo sprint</h3>
+      <div class="stack mt-2">
+        <div class="field"><label>Nome</label><input placeholder="Sprint Cresta…" /></div>
+        <div class="grid grid-2">
+          <div class="field"><label>Start</label><input type="date" /></div>
+          <div class="field"><label>End</label><input type="date" /></div>
+        </div>
+        <div class="field"><label>Sprint Goal</label><textarea></textarea></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost modal-close">Annulla</button>
+        <button class="btn btn-primary toast-btn modal-close" data-toast="Sprint creato">Crea</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-upload">
+    <div class="modal">
+      <h3 class="h3">Upload documento</h3>
+      <div class="stack mt-2">
+        <div class="field"><label>File</label><input type="file" /></div>
+        <div class="field"><label>Surfer target</label><select><option>Luca Valenti</option><option>Team shared</option></select></div>
+        <div class="field"><label>Cartella</label><select><option>Buste paga</option><option>Documenti personali</option><option>Contratti</option><option>Shared team</option></select></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost modal-close">Annulla</button>
+        <button class="btn btn-primary toast-btn modal-close" data-toast="File caricato">Upload</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-meeting">
+    <div class="modal">
+      <h3 class="h3">Nuovo meeting</h3>
+      <div class="stack mt-2">
+        <div class="field"><label>Titolo</label><input /></div>
+        <div class="field"><label>Data / ora</label><input type="datetime-local" /></div>
+        <div class="field"><label>Partecipanti</label><input placeholder="Luca, Marta…" /></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost modal-close">Annulla</button>
+        <button class="btn btn-primary toast-btn modal-close" data-toast="Meeting creato">Crea</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-poll">
+    <div class="modal">
+      <h3 class="h3">Crea poll</h3>
+      <div class="stack mt-2">
+        <div class="field"><label>Domanda</label><input /></div>
+        <div class="field"><label>Opzione 1</label><input /></div>
+        <div class="field"><label>Opzione 2</label><input /></div>
+        <div class="switch-row"><span>Multi-choice</span><label class="switch"><input type="checkbox" /><span></span></label></div>
+        <div class="switch-row"><span>Anonimo</span><label class="switch"><input type="checkbox" /><span></span></label></div>
+        <div class="field"><label>Scadenza</label><input type="datetime-local" /></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost modal-close">Annulla</button>
+        <button class="btn btn-primary toast-btn modal-close" data-toast="Poll pubblicato">Pubblica</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-invite">
+    <div class="modal">
+      <h3 class="h3">Invita surfer</h3>
+      <div class="stack mt-2">
+        <div class="field"><label>Email</label><input type="email" /></div>
+        <div class="field"><label>Ruolo</label><select><option>user</option><option>admin</option></select></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost modal-close">Annulla</button>
+        <button class="btn btn-primary toast-btn modal-close" data-toast="Invite inviato">Invia invite</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-project">
+    <div class="modal">
+      <h3 class="h3">Progetti T&amp;M</h3>
+      <table class="mt-2">
+        <thead><tr><th>Nome</th><th>Cliente</th><th>Attivo</th></tr></thead>
+        <tbody>
+          <tr><td>Client X T&amp;M</td><td>Client X</td><td>✓</td></tr>
+          <tr><td>Internal Wave</td><td>The Wave</td><td>✓</td></tr>
+        </tbody>
+      </table>
+      <div class="modal-actions">
+        <button class="btn btn-ghost modal-close">Chiudi</button>
+        <button class="btn btn-primary toast-btn" data-toast="Progetto aggiunto (demo)">+ Progetto</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
