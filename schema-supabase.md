@@ -1,5 +1,3 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
-
 # Tide — Schema Supabase SQL + Tipi TypeScript
 
 Allineato al PRD MVP Tide per **The Wave** (digital agency · cultura surfer · Scrum 10 gg / daily scritto): ruoli `user` / `admin`, RLS, Storage documenti, Realtime-ready. Dopo il deploy puoi rigenerare i tipi con la CLI Supabase.[^1][^2]
