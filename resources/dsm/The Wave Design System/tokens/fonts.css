@@ -1,0 +1,89 @@
+/* ============================================================
+   FONTS — The Wave
+   Univers LT Pro is THE brand sans (the product code shipped
+   Schibsted Grotesk only as a "Univers-like" web stand-in).
+   Space Mono is the system/data voice, served from Google Fonts.
+
+   Weight mapping (Univers → CSS):
+     45 Light  → 300         55 Roman → 400–500
+     65 Bold   → 600–700     75 Black → 800–900
+   A condensed cut ('Univers LT Pro Cond') is available for tight
+   display numerals / headings.
+   ============================================================ */
+
+/* ---- Space Mono (data / labels) ---- */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+/* ---- Univers LT Pro (brand sans) ---- */
+@font-face {
+  font-family: 'Univers LT Pro';
+  src: url('../assets/fonts/UniversLTPro-45Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Univers LT Pro';
+  src: url('../assets/fonts/UniversLTPro-45LightOblique.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Univers LT Pro';
+  src: url('../assets/fonts/UniversLTPro-55Roman.otf') format('opentype');
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Univers LT Pro';
+  src: url('../assets/fonts/UniversLTPro-55Oblique.otf') format('opentype');
+  font-weight: 400 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Univers LT Pro';
+  src: url('../assets/fonts/UniversLTPro-65Bold.otf') format('opentype');
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Univers LT Pro';
+  src: url('../assets/fonts/UniversLTPro-65BoldOblique.otf') format('opentype');
+  font-weight: 600 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Univers LT Pro';
+  src: url('../assets/fonts/UniversLTPro-75Black.otf') format('opentype');
+  font-weight: 800 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Univers LT Pro';
+  src: url('../assets/fonts/UniversLTPro-75BlackOblique.otf') format('opentype');
+  font-weight: 800 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ---- Univers LT Pro Condensed (display option) ---- */
+@font-face {
+  font-family: 'Univers LT Pro Cond';
+  src: url('../assets/fonts/UniversLTPro-Condensed.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Univers LT Pro Cond';
+  src: url('../assets/fonts/UniversLTPro-BoldCond.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

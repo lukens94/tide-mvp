@@ -1,0 +1,26 @@
+<!-- @dsCard group="Spacing" viewport="700x170" name="Corner radii" subtitle="Controls 12 → cards 22 → chips fully pill" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 22px; }
+  .row { display: flex; gap: 14px; align-items: flex-end; }
+  .item { text-align: center; }
+  .box { width: 74px; height: 74px; background: var(--panel-2); border: 1px solid var(--border); border-top: 3px solid var(--blue); }
+  .lab { font-family: var(--font-mono); font-size: 10px; color: var(--muted); margin-top: 8px; }
+  .name { display: block; color: var(--cream-dim); font-size: 9px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><div class="box" style="border-radius:var(--r-xl)"></div><div class="lab">12<span class="name">control</span></div></div>
+    <div class="item"><div class="box" style="border-radius:var(--r-2xl)"></div><div class="lab">14<span class="name">tile</span></div></div>
+    <div class="item"><div class="box" style="border-radius:var(--r-4xl)"></div><div class="lab">18<span class="name">card</span></div></div>
+    <div class="item"><div class="box" style="border-radius:var(--r-5xl)"></div><div class="lab">20<span class="name">hero</span></div></div>
+    <div class="item"><div class="box" style="border-radius:var(--r-6xl)"></div><div class="lab">22<span class="name">main card</span></div></div>
+    <div class="item"><div class="box" style="border-radius:var(--r-pill)"></div><div class="lab">99<span class="name">pill</span></div></div>
+  </div>
+</body>
+</html>

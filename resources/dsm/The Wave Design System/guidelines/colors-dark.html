@@ -1,0 +1,24 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Dark surfaces" subtitle="Warm panels & inks — the default workspace shell" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 20px; }
+  .row { display: flex; gap: 12px; }
+  .sw { flex: 1; border-radius: var(--r-xl); height: 92px; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; border: 1px solid var(--border); color: var(--cream); }
+  .name { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+  .hex { font-family: var(--font-mono); font-size: 11px; opacity: .6; margin-top: 2px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw" style="background:#1F1F1D"><span class="name">App bg</span><span class="hex">#1F1F1D</span></div>
+    <div class="sw" style="background:var(--panel)"><span class="name">Panel</span><span class="hex">#2A2A28</span></div>
+    <div class="sw" style="background:var(--panel-2)"><span class="name">Raised</span><span class="hex">#363633</span></div>
+    <div class="sw" style="background:var(--border)"><span class="name">Border</span><span class="hex">#45443F</span></div>
+    <div class="sw" style="background:var(--panel-2);color:var(--muted)"><span class="name">Muted text</span><span class="hex">#9B9890</span></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!-- @dsCard group="Colors" viewport="700x140" name="Status & data-viz" subtitle="Semantic status + the cycled project/chart palette" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 20px; }
+  .grid { display: flex; flex-direction: column; gap: 14px; }
+  .row { display: flex; gap: 10px; align-items: center; }
+  .lab { width: 60px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .dot { flex: 1; height: 34px; border-radius: var(--r-md); display: flex; align-items: center; padding: 0 12px; font-family: var(--font-mono); font-size: 10px; }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="row">
+      <span class="lab">Status</span>
+      <span class="dot" style="background:var(--danger);color:#fff">#FF6B6B · danger text</span>
+      <span class="dot" style="background:var(--danger-2);color:#fff">#FF5A5A · danger fill</span>
+      <span class="dot" style="background:var(--blue);color:#fff">#0057FF · success/accent</span>
+    </div>
+    <div class="row">
+      <span class="lab">Data-viz</span>
+      <span class="dot" style="background:var(--viz-1)"></span>
+      <span class="dot" style="background:var(--viz-2)"></span>
+      <span class="dot" style="background:var(--viz-3)"></span>
+      <span class="dot" style="background:var(--viz-4);color:var(--cream)"></span>
+      <span class="dot" style="background:var(--viz-5)"></span>
+      <span class="dot" style="background:var(--viz-6)"></span>
+      <span class="dot" style="background:var(--viz-7)"></span>
+    </div>
+  </div>
+</body>
+</html>

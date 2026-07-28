@@ -1,0 +1,24 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Brand core" subtitle="The five brand colors — blue is the only action color" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 20px; }
+  .row { display: flex; gap: 12px; }
+  .sw { flex: 1; border-radius: var(--r-xl); height: 92px; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; border: 1px solid rgba(255,255,255,.08); }
+  .name { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+  .hex { font-family: var(--font-mono); font-size: 11px; opacity: .7; margin-top: 2px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw" style="background:var(--blue);color:var(--cream)"><span class="name">Blue</span><span class="hex">#0057FF</span></div>
+    <div class="sw" style="background:var(--black);color:var(--cream)"><span class="name">Black</span><span class="hex">#323232</span></div>
+    <div class="sw" style="background:var(--cream);color:var(--black)"><span class="name">Cream</span><span class="hex">#FAF7EB</span></div>
+    <div class="sw" style="background:var(--sand);color:var(--black)"><span class="name">Sand</span><span class="hex">#CDC3BA</span></div>
+    <div class="sw" style="background:var(--yellow);color:var(--black)"><span class="name">Yellow</span><span class="hex">#FFD400</span></div>
+  </div>
+</body>
+</html>

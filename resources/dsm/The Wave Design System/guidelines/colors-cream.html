@@ -1,0 +1,24 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Cream inks" subtitle="Text, lines & fills used ON cream cards" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 20px; background: var(--cream); }
+  .row { display: flex; gap: 12px; }
+  .sw { flex: 1; border-radius: var(--r-xl); height: 92px; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; border: 1px solid var(--cream-bd); color: var(--black); }
+  .name { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+  .hex { font-family: var(--font-mono); font-size: 11px; opacity: .6; margin-top: 2px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw" style="background:var(--cream-in)"><span class="name">Inset</span><span class="hex">#FFFDF6</span></div>
+    <div class="sw" style="background:var(--cream-bd)"><span class="name">Border</span><span class="hex">#E3DFD2</span></div>
+    <div class="sw" style="background:var(--cream-cell)"><span class="name">Cell</span><span class="hex">#EFEBDD</span></div>
+    <div class="sw" style="background:var(--cream-in);color:var(--cream-mut)"><span class="name">Muted</span><span class="hex">#8A877E</span></div>
+    <div class="sw" style="background:var(--cream-in);color:var(--cream-dim)"><span class="name">Dim / hint</span><span class="hex">#BDBAB1</span></div>
+  </div>
+</body>
+</html>

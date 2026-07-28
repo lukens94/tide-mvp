@@ -1,0 +1,26 @@
+<!-- @dsCard group="Brand" viewport="700x180" name="Elevation & motion" subtitle="Subtle shadows; springy lift/press interactions" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 26px; }
+  .row { display: flex; gap: 18px; align-items: center; }
+  .item { text-align: center; }
+  .box { width: 120px; height: 80px; border-radius: var(--r-2xl); background: var(--panel-2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 10px; color: var(--muted); }
+  .b-tile { box-shadow: var(--shadow-tile); }
+  .b-btn { background: var(--blue); color: var(--cream); border: none; box-shadow: var(--shadow-btn); }
+  .b-modal { box-shadow: var(--shadow-modal); }
+  .lab { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--cream-dim); margin-top: 10px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><div class="box b-tile">tile hover</div><div class="lab">0 8 20 / .18</div></div>
+    <div class="item"><div class="box b-btn">button</div><div class="lab">blue glow .35</div></div>
+    <div class="item"><div class="box b-modal">modal</div><div class="lab">0 30 80 / .5</div></div>
+    <div class="item"><div class="box" style="box-shadow:none">flat</div><div class="lab">no shadow</div></div>
+  </div>
+</body>
+</html>

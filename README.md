@@ -1,77 +1,86 @@
-# Tide — Documentazione MVP
+# Tide
 
-**Tide** è la dashboard interna di **The Wave** (The Wave Studio) per i **surfer** — le persone del team.
+**Tide** is the internal surfer dashboard for **The Wave** — one beach for auth, profile, leave, sprint, time tracking, docs, daily, wellbeing, meetings, polls, and alerts.
 
-Un’unica “spiaggia” per auth, profilo, ferie, sprint, time tracking, documenti, daily, wellbeing (boa + segnali marea), meeting, poll e Tide Alerts — con esperienza fresca, positiva e coerente con la cultura onda/surf dell’agenzia.
+_La marea del team, in un’unica spiaggia._
 
-| | |
-| :-- | :-- |
-| **Prodotto** | Tide · The Wave |
-| **Utenti** | Surfer (user) · Board (admin) |
-| **Stack** | Next.js + TypeScript · Supabase · shadcn/ui · TanStack Query |
-| **Stato** | Spec MVP — draft per validazione board |
-| **Tagline** | *La marea del team, in un’unica spiaggia.* |
+|             |                                                              |
+| :---------- | :----------------------------------------------------------- |
+| **Product** | Tide · The Wave                                              |
+| **Users**   | Surfer (user) · Board (admin)                                |
+| **Stack**   | Next.js + TypeScript · Supabase · shadcn/ui · TanStack Query |
+| **Status**  | Scaffold + MVP specs                                         |
 
-**Prototipo clickable (GitHub Pages):** [lukens94.github.io/tide-mvp](https://lukens94.github.io/tide-mvp/) — demo statica, toggle Surfer / Board in sidebar.
-
----
-
-## Chi è The Wave
-
-**The Wave** è una digital agency che accompagna i clienti nella *digital transformation*: competenze tecniche al servizio delle aziende sul mercato digitale.
-
-La vision non è solo qualità tecnica nazionale — è anche la qualità dell’ambiente di lavoro: **l’isola felice**. Identità: *«Noi siamo i surfer. Noi siamo l’onda.»* Cavalcare il cambiamento, non subirirlo.
-
-**Cultura (pilastri)** che Tide deve rendere operativi, non solo dichiarati:
-
-| Pilastro | Come entra in Tide |
-| :-- | :-- |
-| **Feedback** | Poll, meeting board, daily, wellbeing — spazio per dire ciò che fa bene al team |
-| **Formazione** | Documenti, note sprint, memoria di rituali (base per workshop futuri) |
-| **Team building** | Ops, poll flash, vista di squadra — senso di famiglia, non solo tool HR |
-| **Talento** | Profilo, sprint/SP, time — visibilità sul lavoro di professionisti |
-| **Responsabilità** | Ferie self-service, time T&M, daily — flessibilità con accountability |
-| **Agile / Scrum** | Sprint Surf + Daily Wave (daily scritto + **La mia marea** self-report; sprint 10 gg) |
-
-Tone: fresco, alla mano, ispirato a street art e cultura pop; interno orientato ad ascolto e feedback; esterno come parlare con un amico di vecchia data.
+Full product and tech details: [docs/prd-tide-mvp.md](docs/prd-tide-mvp.md).
 
 ---
 
-## Perché esiste Tide
+## Getting started
 
-Oggi ferie, sprint, ore T&M, documenti, daily, wellbeing, meeting e sondaggi vivono su tool diversi o a mano. Tide diventa **unica fonte di verità** operativa della spiaggia: self-service per il surfer, vista d’insieme (e approvazioni) per il board — e infrastruttura per proteggere l’*isola felice* mentre il team scala.
+**Requirements:** Node.js 20+, [pnpm](https://pnpm.io/) 11+
+
+```bash
+pnpm install
+cp .env.example .env.local
+pnpm dev
+```
+
+Open [http://127.0.0.1:3000](http://127.0.0.1:3000).
+
+**From Cursor:** `Terminal → Run Task… → dev`, or open **Run and Debug** (`⇧⌘D`) and start **Next.js: dev server**.
+
+### Environment
+
+Copy [`.env.example`](.env.example) to `.env.local` and fill in:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+```
+
+### Scripts
+
+| Command             | Description            |
+| :------------------ | :--------------------- |
+| `pnpm dev`          | Next.js dev server     |
+| `pnpm build`        | Production build       |
+| `pnpm start`        | Serve production build |
+| `pnpm lint`         | ESLint                 |
+| `pnpm format`       | Prettier write         |
+| `pnpm format:check` | Prettier check         |
+
+### Commit messages
+
+Commits must follow [Conventional Commits](https://www.conventionalcommits.org/) (enforced by Husky + commitlint), e.g. `feat:`, `fix:`, `chore:`, `docs:`.
 
 ---
 
-## Come leggere questa cartella
+## Documentation
 
-Ordine consigliato per chi arriva da zero:
+Product specs live under [`docs/`](docs/INDEX.md):
 
-| # | Documento | A cosa serve |
-| :- | :-- | :-- |
-| 1 | [Nome MVP: Tide](nome-mvp-raccomandazione.md) | Branding, tone of voice, copy e naming sezioni |
-| 2 | [PRD — Tide MVP](prd-tide-mvp.md) | Spec di prodotto: problema, obiettivi, ruoli, feature map, stack, scope MVP |
-| 3 | [Wireframe testuale page-by-page](wireframe-page-by-page.md) | UI desktop-first: layout shell, schermate, componenti shadcn, flussi Surfer/Board |
-| 4 | [Schema Supabase SQL + Tipi TypeScript](schema-supabase.md) | Dati: enum, tabelle, RLS, storage, tipi TS allineati al PRD |
-| 5 | [DSM — istruzioni design tokens](dsm-tide-instructions.md) | Colori, tipografia, shadow, mappatura shadcn/Tailwind |
-| 6 | [MVP HTML clickable](mvp/index.html) | Prototipo statico: shell dashboard + tutte le feature Surfer/Board |
-
----
-
-## Mappa rapida per ruolo
-
-| Se stai… | Parti da |
-| :-- | :-- |
-| Validando nome e tone of voice | [Naming](nome-mvp-raccomandazione.md) |
-| Definendo o sfidando lo scope MVP | [PRD](prd-tide-mvp.md) |
-| Disegnando o implementando UI | [Wireframe](wireframe-page-by-page.md) · [DSM](dsm-tide-instructions.md) · [MVP live](https://lukens94.github.io/tide-mvp/) |
-| Impostando DB, auth e permessi | [Schema Supabase](schema-supabase.md) |
+| Doc                                          | Purpose                      |
+| :------------------------------------------- | :--------------------------- |
+| [INDEX](docs/INDEX.md)                       | Reading order and role map   |
+| [PRD](docs/prd-tide-mvp.md)                  | Product scope and stack      |
+| [Wireframes](docs/wireframe-page-by-page.md) | Page-by-page UI              |
+| [Schema Supabase](docs/schema-supabase.md)   | DB, RLS, TypeScript types    |
+| [DSM tokens](docs/dsm-tide-instructions.md)  | Design tokens for future DSM |
 
 ---
 
-## Ambito MVP (sintesi)
+## DSM resources (reference only)
 
-- **Surfer**: profilo, ferie e saldo, sprint/SP propri, time T&M, documenti personali, daily, Wellbeing Buoy (boa + segnali), poll/meeting, notifiche.
-- **Board**: approvazioni ferie, gestione sprint e team, upload documenti, marea di squadra (Wellbeing Buoy), meeting/poll, invite utenti e ruoli, insight/benchmark (AI light).
+These assets live under [`resources/dsm/`](resources/dsm/) and are **not** part of the Next.js app. Use them as reference for the future Tide design system:
 
-Dettaglio feature-by-feature: sezione *Scope MVP* del [PRD](prd-tide-mvp.md).
+- [`Storypoints Workspace.html`](resources/dsm/Storypoints%20Workspace.html)
+- [`The Wave Design System/`](resources/dsm/The%20Wave%20Design%20System/)
+
+---
+
+## MVP prototype
+
+Static clickable prototype (GitHub Pages):
+
+- Source: [`mvp/`](mvp/)
+- Live: [lukens94.github.io/tide-mvp](https://lukens94.github.io/tide-mvp/)

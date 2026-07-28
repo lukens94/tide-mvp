@@ -1,0 +1,84 @@
+/* ============================================================
+   COLORS — The Wave
+   Core brand palette + dark-workspace surfaces + cream-surface
+   inks + semantic aliases. The product ships a dark theme by
+   default with a light theme opt-in (see .theme-light scope).
+   ============================================================ */
+
+:root {
+  /* ---- Core brand ---- */
+  --black:   #323232;   /* near-black ink, never pure #000 */
+  --cream:   #FAF7EB;   /* warm off-white — the brand "paper" */
+  --sand:    #CDC3BA;   /* muted taupe accent surface */
+  --blue:    #0057FF;   /* primary — actions, focus, active nav */
+  --blue-2:  #1A66FF;   /* primary hover (lighter) */
+  --yellow:  #FFD400;   /* high-energy accent — highlight tiles */
+
+  /* ---- Dark workspace surfaces (default theme) ---- */
+  --panel:    #2A2A28;  /* app / section background */
+  --panel-2:  #363633;  /* raised: sidebar, fields, badges, tiles */
+  --app-bg:   #1F1F1D;  /* deepest backdrop behind the app */
+  --border:   #45443F;  /* control borders on dark */
+  --line:     #3A3A36;  /* hairline dividers on dark */
+  --muted:    #9B9890;  /* secondary text on dark */
+
+  /* ---- Cream-surface inks (text/lines ON cream cards) ---- */
+  --cream-in:   #FFFDF6; /* inset input fill on cream */
+  --cream-line: #EAE6DA; /* divider on cream */
+  --cream-bd:   #E3DFD2; /* border on cream */
+  --cream-mut:  #8A877E; /* secondary text on cream */
+  --cream-dim:  #BDBAB1; /* tertiary / hint text on cream */
+  --cream-cell: #EFEBDD; /* empty calendar cell on cream */
+  --cream-cell-h: #E3DDC9; /* empty cell hover */
+
+  /* ---- Semantic status ---- */
+  --danger:   #FF6B6B;  /* destructive text / errors */
+  --danger-2: #FF5A5A;  /* destructive button fill */
+  --success:  #0057FF;  /* success accents reuse brand blue */
+
+  /* ---- Data-viz project palette (cycled for projects/charts) ---- */
+  --viz-1: #0057FF;
+  --viz-2: #FFD400;
+  --viz-3: #CDC3BA;
+  --viz-4: #323232;
+  --viz-5: #1A66FF;
+  --viz-6: #00A98F;
+  --viz-7: #FF6B35;
+
+  /* ---- Semantic aliases (prefer these in components) ---- */
+  --surface-app:      var(--panel);
+  --surface-raised:   var(--panel-2);
+  --surface-card:     var(--cream);
+  --surface-accent:   var(--blue);
+
+  --text-on-dark:     var(--cream);
+  --text-on-dark-mut: var(--muted);
+  --text-on-cream:    var(--black);
+  --text-on-cream-mut:var(--cream-mut);
+  --text-on-blue:     var(--cream);
+  --text-on-blue-mut: #BCD0FF;    /* muted labels on blue hero */
+
+  --border-control:   var(--border);
+  --border-divider:   var(--line);
+
+  --accent:           var(--blue);
+  --accent-hover:     var(--blue-2);
+  --focus-ring:       var(--blue);
+}
+
+/* ============================================================
+   LIGHT THEME — opt-in via <body class="theme-light">
+   Only the dark-workspace surfaces flip; brand colors and
+   cream-card inks are unchanged.
+   ============================================================ */
+body.theme-light {
+  --app-bg:   #E9E5D9;
+  --panel:    #F4F1E8;
+  --panel-2:  #FBF9F1;
+  --border:   #DCD7C8;
+  --line:     #E5E0D1;
+  --muted:    #6F685F;
+
+  --text-on-dark:     var(--black);
+  --text-on-dark-mut: var(--muted);
+}

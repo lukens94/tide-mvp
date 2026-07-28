@@ -1,0 +1,25 @@
+<!-- @dsCard group="Brand" viewport="700x180" name="Logo — wordmark" subtitle="Cream 'THE WAVE' wordmark, for dark & blue surfaces only" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 0; }
+  .row { display: flex; height: 180px; }
+  .cell { flex: 1; display: flex; align-items: center; justify-content: center; padding: 32px; }
+  .cell img { width: 100%; max-width: 240px; height: auto; display: block; }
+  .ok { background: var(--panel); }
+  .ok2 { background: var(--blue); }
+  .bad { background: var(--cream); position: relative; }
+  .bad::after { content: "✕ not on cream"; position: absolute; bottom: 10px; font-family: var(--font-mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--danger); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="cell ok"><img src="../assets/logo-thewave-cream.png" alt="The Wave"></div>
+    <div class="cell ok2"><img src="../assets/logo-thewave-cream.png" alt="The Wave"></div>
+    <div class="cell bad"><img src="../assets/logo-thewave-cream.png" alt="The Wave" style="opacity:.5"></div>
+  </div>
+</body>
+</html>

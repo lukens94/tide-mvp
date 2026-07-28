@@ -1,0 +1,88 @@
+<!-- @dsCard group="Forms" viewport="700x760" name="Form kit" subtitle="Inputs, select, password, date, number, search, radio, chips, swatches, switch" -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { padding: 24px; }
+  .panel { background: var(--panel); border: 1px solid var(--border); border-radius: var(--r-4xl); padding: 22px; }
+  .sec-lab { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 4px 0 12px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .pmrow { display: grid; grid-template-columns: auto 1fr auto auto; gap: 10px; align-items: center; margin-top: 12px; }
+  hr { border: none; border-top: 1px solid var(--line); margin: 22px 0; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script type="text/babel">
+    const NS = window.TheWaveDesignSystem_664d29;
+    const { Input, Select, Textarea, Checkbox, FormField, PasswordInput, SearchInput,
+            NumberField, DateField, ChipSelect, ColorSwatchPicker, RadioGroup, Switch, IconButton } = NS;
+
+    function Demo() {
+      const [area, setArea] = React.useState('design');
+      const [pw, setPw] = React.useState('segreto12');
+      const [q, setQ] = React.useState('mario');
+      const [sp, setSp] = React.useState(8);
+      const [color, setColor] = React.useState('#0057FF');
+      const [notify, setNotify] = React.useState(true);
+      const [priority, setPriority] = React.useState('media');
+      return (
+        <div className="panel">
+          <div className="sec-lab">Text · Select · Password</div>
+          <FormField label="Nome Sprint" htmlFor="ns" required>
+            <Input id="ns" defaultValue="Sprint Luglio" placeholder="es. Sprint Luglio" />
+          </FormField>
+          <div className="grid2">
+            <FormField label="Area"><Select value={area} onChange={(e)=>setArea(e.target.value)} options={[{value:'coding',label:'Area Coding'},{value:'design',label:'Area Design'}]} /></FormField>
+            <FormField label="Password" hint="Almeno 8 caratteri"><PasswordInput value={pw} onChange={(e)=>setPw(e.target.value)} /></FormField>
+          </div>
+
+          <div className="sec-lab">Date · Number · Search</div>
+          <div className="grid2">
+            <FormField label="Inizio"><DateField defaultValue="2025-07-02" /></FormField>
+            <FormField label="Fine"><DateField defaultValue="2025-07-27" /></FormField>
+          </div>
+          <div className="grid2">
+            <FormField label="Story points"><NumberField value={sp} onChange={setSp} /></FormField>
+            <FormField label="Cerca collaboratore"><SearchInput value={q} onChange={(e)=>setQ(e.target.value)} onClear={()=>setQ('')} placeholder="nome@esempio.it" /></FormField>
+          </div>
+
+          <div className="sec-lab">Radio · Chip select · Color · Switch</div>
+          <FormField label="Priorità">
+            <RadioGroup name="prio" inline value={priority} onChange={setPriority} options={[{value:'bassa',label:'Bassa'},{value:'media',label:'Media'},{value:'alta',label:'Alta'}]} />
+          </FormField>
+          <FormField label="Stato">
+            <ChipSelect value="corso" onChange={()=>{}} options={[{value:'todo',label:'Da fare'},{value:'corso',label:'In corso'},{value:'done',label:'Completato'}]} />
+          </FormField>
+          <div className="grid2">
+            <FormField label="Colore progetto"><ColorSwatchPicker value={color} onChange={setColor} /></FormField>
+            <FormField label="Opzioni"><Switch checked={notify} onChange={setNotify} label="Notifiche email" /></FormField>
+          </div>
+
+          <div className="sec-lab">Textarea · Checkbox</div>
+          <FormField label="Obiettivo">
+            <Textarea rows={2} defaultValue="Consegnare il restyle completo dell'area cliente." />
+          </FormField>
+          <Checkbox onCream={false} label="Salva come modello di sprint" checked={false} onChange={()=>{}} />
+
+          <hr/>
+          <div className="sec-lab" style={{margin:0,marginBottom:'10px'}}>Riga progetto (color + code + SP)</div>
+          <div className="pmrow">
+            <ColorSwatchPicker value={color} onChange={setColor} size={20} colors={['#0057FF','#FFD400','#CDC3BA','#00A98F']} />
+            <Input placeholder="Sigla" defaultValue="RCA" />
+            <NumberField value={20} onChange={()=>{}} />
+            <IconButton title="Elimina"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></IconButton>
+          </div>
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+  </script>
+</body>
+</html>

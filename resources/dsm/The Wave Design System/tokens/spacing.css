@@ -1,0 +1,33 @@
+/* ============================================================
+   SPACING — The Wave
+   The product is built on a 14px gutter (bento grids, card gaps)
+   with control padding in the 10–22px range. Scale below is the
+   observed rhythm, not a rigid 4/8 grid.
+   ============================================================ */
+
+:root {
+  --space-1:  4px;
+  --space-2:  6px;
+  --space-3:  8px;
+  --space-4:  10px;
+  --space-5:  12px;
+  --space-6:  14px;   /* the signature gutter — bento gaps, card gaps */
+  --space-7:  16px;
+  --space-8:  18px;   /* card inner padding */
+  --space-9:  20px;
+  --space-10: 22px;   /* card inner padding (large) */
+  --space-12: 26px;   /* hero padding */
+  --space-14: 30px;   /* header horizontal padding */
+
+  /* ---- Common component paddings ---- */
+  --pad-btn:      12px 17px;   /* primary button */
+  --pad-pill:     11px 16px;   /* field pill */
+  --pad-tab:      10px 18px;   /* tab */
+  --pad-input:    13px 15px;   /* modal input */
+  --pad-card:     20px 22px 22px;
+  --pad-hero:     26px;
+
+  /* ---- Sidebar ---- */
+  --sidebar-w:      210px;
+  --sidebar-w-min:  72px;   /* collapsed (icons only) */
+}

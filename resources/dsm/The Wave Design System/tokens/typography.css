@@ -1,0 +1,54 @@
+/* ============================================================
+   TYPOGRAPHY — The Wave
+   Two families. Schibsted Grotesk carries all display + UI text
+   (heavy weights, tight tracking). Space Mono is the "system"
+   voice: labels, data, buttons, timestamps — always UPPERCASE
+   with wide letter-spacing.
+   ============================================================ */
+
+:root {
+  /* ---- Families ---- */
+  --font-sans: 'Univers LT Pro', 'Schibsted Grotesk', Helvetica, Arial, sans-serif;
+  --font-cond: 'Univers LT Pro Cond', 'Univers LT Pro', Helvetica, Arial, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* ---- Display / UI type scale (Schibsted Grotesk) ---- */
+  --text-hero:   92px;    /* the giant SP counter */
+  --text-4xl:    48px;
+  --text-3xl:    32px;
+  --text-2xl:    24px;    /* pane titles */
+  --text-xl:     20px;
+  --text-lg:     18px;
+  --text-md:     16px;    /* body base */
+  --text-sm:     15px;
+  --text-xs:     13px;
+
+  /* ---- Mono label scale (Space Mono, uppercase, tracked) ---- */
+  --mono-md:     11.5px;  /* buttons, tabs, field pills */
+  --mono-sm:     10.5px;  /* section labels */
+  --mono-xs:     10px;    /* hints, captions */
+  --mono-2xs:    9.5px;   /* dense meta (calendar) */
+
+  /* ---- Weights ---- */
+  --fw-regular:  400; /* @kind font */
+  --fw-medium:   500; /* @kind font */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold:     700; /* @kind font */
+  --fw-heavy:    800; /* @kind font */
+  --fw-black:    900; /* @kind font */
+
+  /* ---- Line heights ---- */
+  --lh-tight:    1.0;    /* @kind other */
+  --lh-snug:     1.25;   /* @kind other */
+  --lh-normal:   1.5;    /* @kind other */
+  --lh-relaxed:  1.6;    /* @kind other */
+
+  /* ---- Letter spacing ---- */
+  --ls-hero:    -0.04em; /* @kind other */
+  --ls-tight:   -0.02em; /* @kind other */
+  --ls-snug:    -0.01em; /* @kind other */
+  --ls-normal:   0;       /* @kind other */
+  --ls-label:    0.08em; /* @kind other */
+  --ls-wide:     0.12em; /* @kind other */
+  --ls-wider:    0.14em; /* @kind other */
+}

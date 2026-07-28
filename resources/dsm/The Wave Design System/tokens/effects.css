@@ -1,0 +1,42 @@
+/* ============================================================
+   RADIUS & EFFECTS — The Wave
+   Generous, soft rounding (9–22px). Cards are the roundest.
+   Shadows are subtle on dark, more present on colored surfaces.
+   Motion is quick and springy (cubic-bezier(.2,.8,.2,1)).
+   ============================================================ */
+
+:root {
+  /* ---- Corner radii ---- */
+  --r-xs:   6px;    /* checkboxes, tiny swatches */
+  --r-sm:   8px;    /* rich-text tools */
+  --r-md:   9px;    /* calendar cells, week buttons */
+  --r-lg:   11px;   /* nav items, tabs, ghost buttons */
+  --r-xl:   12px;   /* buttons, field pills, icon buttons */
+  --r-2xl:  14px;   /* stat tiles, game stats */
+  --r-3xl:  16px;   /* modals-inner, sections */
+  --r-4xl:  18px;   /* modals, workspace cards */
+  --r-5xl:  20px;   /* hero, SP panel */
+  --r-6xl:  22px;   /* the main cream card, sp-rows */
+  --r-pill: 99px;   /* chips, progress bars */
+  --r-full: 50%;    /* avatars, level badge */
+
+  /* ---- Shadows ---- */
+  --shadow-tile:    0 8px 20px rgba(0,0,0,.18);           /* tile hover lift */
+  --shadow-cell:    0 4px 12px rgba(0,0,0,.18);           /* calendar cell hover */
+  --shadow-btn:     0 6px 18px rgba(0,87,255,.35);        /* primary button hover (blue glow) */
+  --shadow-modal:   0 30px 80px rgba(0,0,0,.5);           /* modal */
+  --shadow-toast:   0 10px 30px rgba(0,0,0,.4);           /* toast */
+  --shadow-avatar:  0 0 0 4px var(--panel-2), 0 0 0 6px var(--blue), 0 8px 24px rgba(0,0,0,.4); /* ringed avatar */
+
+  /* ---- Overlay / blur ---- */
+  --overlay-bg:     rgba(15,15,13,.6);
+  --overlay-blur:   blur(3px); /* @kind other */
+
+  /* ---- Motion ---- */
+  --ease-spring:    cubic-bezier(.2,.8,.2,1); /* @kind other */
+  --ease-standard:  ease; /* @kind other */
+  --dur-fast:       .12s; /* @kind other */
+  --dur-base:       .15s; /* @kind other */
+  --dur-slow:       .25s; /* @kind other */
+  --dur-bar:        .5s; /* @kind other */
+}

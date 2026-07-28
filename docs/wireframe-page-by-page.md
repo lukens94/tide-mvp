@@ -620,22 +620,22 @@ Lista ultimi invii Table
 
 ## Mappa rapida componenti ↔ feature
 
-| Area        | Componenti shadcn chiave                                     |
-| :---------- | :----------------------------------------------------------- |
-| Shell       | Sidebar, Breadcrumb, DropdownMenu, Popover, Sonner, Skeleton |
-| Auth        | Card, Form, Input, Button, Alert                             |
-| Home        | Card, Badge, Progress, Chart, Button                         |
-| Profilo     | Tabs, Avatar, Form, Switch, Dialog                           |
-| Ferie       | Table, Dialog, Calendar, Badge, AlertDialog                  |
-| Sprint      | Card, Progress, Chart, Dialog, Select, Badge                 |
-| Time        | Table, Select, DatePicker, Dialog, Tabs                      |
-| Docs        | Table, Dialog, Badge, ScrollArea, DropdownMenu               |
-| Daily       | Card, Textarea, Tabs, Collapsible, Badge                     |
+| Area           | Componenti shadcn chiave                                       |
+| :------------- | :------------------------------------------------------------- |
+| Shell          | Sidebar, Breadcrumb, DropdownMenu, Popover, Sonner, Skeleton   |
+| Auth           | Card, Form, Input, Button, Alert                               |
+| Home           | Card, Badge, Progress, Chart, Button                           |
+| Profilo        | Tabs, Avatar, Form, Switch, Dialog                             |
+| Ferie          | Table, Dialog, Calendar, Badge, AlertDialog                    |
+| Sprint         | Card, Progress, Chart, Dialog, Select, Badge                   |
+| Time           | Table, Select, DatePicker, Dialog, Tabs                        |
+| Docs           | Table, Dialog, Badge, ScrollArea, DropdownMenu                 |
+| Daily          | Card, Textarea, Tabs, Collapsible, Badge                       |
 | Wellbeing Buoy | Slider/ToggleGroup, Chart, Table, Tabs, Alert, Badge, Skeleton |
-| Meetings    | Resizable, Checkbox, Table, Textarea                         |
-| Polls       | RadioGroup, Dialog, Chart, Progress, Switch                  |
-| Admin users | Data Table, Dialog, Select, Badge                            |
-| Newsletter  | Form, Textarea, AlertDialog, Table                           |
+| Meetings       | Resizable, Checkbox, Table, Textarea                           |
+| Polls          | RadioGroup, Dialog, Chart, Progress, Switch                    |
+| Admin users    | Data Table, Dialog, Select, Badge                              |
+| Newsletter     | Form, Textarea, AlertDialog, Table                             |
 
 ---
 

@@ -7,17 +7,17 @@ _(branding: **Tide by The Wave** · in app: solo **Tide**)_
 
 ## Perché Tide
 
-Allineato all’identità Wave: *«Noi siamo i surfer. Noi siamo l’onda.»* — la marea è il ritmo del team sull’isola felice.
+Allineato all’identità Wave: _«Noi siamo i surfer. Noi siamo l’onda.»_ — la marea è il ritmo del team sull’isola felice.
 
-| Criterio      | Perché regge                                                                                                                         |
-| :------------ | :----------------------------------------------------------------------------------------------------------------------------------- |
-| **Brand**     | Marea = ritmo del team: ferie, daily scritto, sprint 10 gg, wellbeing. Coerente con Wave senza copiare il nome agenzia.              |
-| **Tone**      | Una parola, leggera, pop — non suona HR; matcha il surfer fresco / street art / cultura pop.                                         |
-| **Cosa fa**   | “La marea” è lo stato sempre aggiornato: saldo, ore, SP, clima squadra — trasparenza e responsabilità in un colpo solo.             |
-| **UX copy**   | “Apri Tide”, “La marea di oggi”, “Saldo sulla marea”, “Tide Alerts”, “Entra in Tide — imbraccia la tavola.”                          |
-| **Cultura**   | Rende operativi i pilastri Wave (feedback, formazione, team, talento, responsabilità, Agile) senza tono corporate.                   |
-| **Scalabile** | Domani può diventare _Tide for teams_ senza legarsi solo a “dashboard dipendente”.                                                   |
-| **Tech**      | Domain-friendly: `tide.thewave…`, package `@thewave/tide`, repo `tide`.                                                              |
+| Criterio      | Perché regge                                                                                                            |
+| :------------ | :---------------------------------------------------------------------------------------------------------------------- |
+| **Brand**     | Marea = ritmo del team: ferie, daily scritto, sprint 10 gg, wellbeing. Coerente con Wave senza copiare il nome agenzia. |
+| **Tone**      | Una parola, leggera, pop — non suona HR; matcha il surfer fresco / street art / cultura pop.                            |
+| **Cosa fa**   | “La marea” è lo stato sempre aggiornato: saldo, ore, SP, clima squadra — trasparenza e responsabilità in un colpo solo. |
+| **UX copy**   | “Apri Tide”, “La marea di oggi”, “Saldo sulla marea”, “Tide Alerts”, “Entra in Tide — imbraccia la tavola.”             |
+| **Cultura**   | Rende operativi i pilastri Wave (feedback, formazione, team, talento, responsabilità, Agile) senza tono corporate.      |
+| **Scalabile** | Domani può diventare _Tide for teams_ senza legarsi solo a “dashboard dipendente”.                                      |
+| **Tech**      | Domain-friendly: `tide.thewave…`, package `@thewave/tide`, repo `tide`.                                                 |
 
 **Tagline MVP (interna)**
 

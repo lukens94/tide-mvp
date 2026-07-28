@@ -1040,32 +1040,29 @@ Sotto: tipi manuali allineati allo schema (utili subito + helper).
 // src/types/tide.ts
 
 /** Enums (mirror SQL) */
-export type UserRole = "user" | "admin";
-export type LeaveType = "ferie" | "permesso";
-export type LeaveUnit = "full_day" | "half_morning" | "half_afternoon";
-export type LeaveStatus = "pending" | "approved" | "rejected" | "cancelled";
-export type StoryStatus = "todo" | "doing" | "done";
-export type SprintStatus = "planned" | "active" | "completed";
+export type UserRole = 'user' | 'admin';
+export type LeaveType = 'ferie' | 'permesso';
+export type LeaveUnit = 'full_day' | 'half_morning' | 'half_afternoon';
+export type LeaveStatus = 'pending' | 'approved' | 'rejected' | 'cancelled';
+export type StoryStatus = 'todo' | 'doing' | 'done';
+export type SprintStatus = 'planned' | 'active' | 'completed';
 export type DocumentFolder =
-  | "buste_paga"
-  | "documenti_personali"
-  | "contratti"
-  | "shared_team";
+  'buste_paga' | 'documenti_personali' | 'contratti' | 'shared_team';
 export type NotificationType =
-  | "leave_status"
-  | "poll_new"
-  | "poll_closed"
-  | "meeting_invite"
-  | "document_uploaded"
-  | "daily_reminder"
-  | "wellbeing_published"
-  | "burnout_alert"
-  | "sprint_update"
-  | "system";
-export type MeetingStatus = "scheduled" | "live" | "done" | "cancelled";
-export type PollStatus = "open" | "closed";
-export type ThemePreference = "system" | "light" | "ocean_dark";
-export type BurnoutLabel = "marea_calma" | "corrente" | "tempesta" | string;
+  | 'leave_status'
+  | 'poll_new'
+  | 'poll_closed'
+  | 'meeting_invite'
+  | 'document_uploaded'
+  | 'daily_reminder'
+  | 'wellbeing_published'
+  | 'burnout_alert'
+  | 'sprint_update'
+  | 'system';
+export type MeetingStatus = 'scheduled' | 'live' | 'done' | 'cancelled';
+export type PollStatus = 'open' | 'closed';
+export type ThemePreference = 'system' | 'light' | 'ocean_dark';
+export type BurnoutLabel = 'marea_calma' | 'corrente' | 'tempesta' | string;
 
 export interface Profile {
   id: string;
@@ -1095,19 +1092,19 @@ export interface Profile {
 export type ProfileUpdate = Partial<
   Pick<
     Profile,
-    | "full_name"
-    | "first_name"
-    | "last_name"
-    | "avatar_url"
-    | "bio"
-    | "phone"
-    | "slack_handle"
-    | "email_digest"
-    | "notify_leave"
-    | "notify_poll"
-    | "notify_meeting"
-    | "notify_document"
-    | "theme"
+    | 'full_name'
+    | 'first_name'
+    | 'last_name'
+    | 'avatar_url'
+    | 'bio'
+    | 'phone'
+    | 'slack_handle'
+    | 'email_digest'
+    | 'notify_leave'
+    | 'notify_poll'
+    | 'notify_meeting'
+    | 'notify_document'
+    | 'theme'
   >
 >;
 
@@ -1115,11 +1112,11 @@ export type ProfileUpdate = Partial<
 export type ProfileAdminUpdate = Partial<
   Pick<
     Profile,
-    | "role"
-    | "is_active"
-    | "start_date"
-    | "leave_balance_ferie"
-    | "leave_balance_permessi"
+    | 'role'
+    | 'is_active'
+    | 'start_date'
+    | 'leave_balance_ferie'
+    | 'leave_balance_permessi'
   >
 >;
 
@@ -1225,11 +1222,11 @@ export interface DocumentMeta {
 }
 
 export type MoodLabel =
-  | "serve_una_mano"
-  | "vento_contrario"
-  | "marea_piatta"
-  | "buona_energia"
-  | "marea_alta";
+  | 'serve_una_mano'
+  | 'vento_contrario'
+  | 'marea_piatta'
+  | 'buona_energia'
+  | 'marea_alta';
 
 export interface DailyMoodCheckin {
   id: string;
@@ -1391,7 +1388,7 @@ export interface NewsletterSend {
 export interface AiAnalysisRun {
   id: string;
   created_by: string | null;
-  scope: "team" | "user";
+  scope: 'team' | 'user';
   target_user_id: string | null;
   range_from: string | null;
   range_to: string | null;
@@ -1409,11 +1406,11 @@ export interface SprintWithStories extends Sprint {
 }
 
 export interface LeaveRequestWithUser extends LeaveRequest {
-  profile?: Pick<Profile, "id" | "full_name" | "avatar_url" | "email">;
+  profile?: Pick<Profile, 'id' | 'full_name' | 'avatar_url' | 'email'>;
 }
 
 export interface DailyNoteWithProject extends DailyNote {
-  project?: Pick<Project, "id" | "name" | "code">;
+  project?: Pick<Project, 'id' | 'name' | 'code'>;
 }
 
 export interface PollWithOptions extends Poll {
@@ -1427,19 +1424,19 @@ export interface PollWithOptions extends Poll {
 
 ```ts
 // src/types/supabase-helpers.ts
-import type { Database } from "./database.types";
+import type { Database } from './database.types';
 
-export type Tables<T extends keyof Database["public"]["Tables"]> =
-  Database["public"]["Tables"][T]["Row"];
+export type Tables<T extends keyof Database['public']['Tables']> =
+  Database['public']['Tables'][T]['Row'];
 
-export type InsertDto<T extends keyof Database["public"]["Tables"]> =
-  Database["public"]["Tables"][T]["Insert"];
+export type InsertDto<T extends keyof Database['public']['Tables']> =
+  Database['public']['Tables'][T]['Insert'];
 
-export type UpdateDto<T extends keyof Database["public"]["Tables"]> =
-  Database["public"]["Tables"][T]["Update"];
+export type UpdateDto<T extends keyof Database['public']['Tables']> =
+  Database['public']['Tables'][T]['Update'];
 
-export type Enums<T extends keyof Database["public"]["Enums"]> =
-  Database["public"]["Enums"][T];
+export type Enums<T extends keyof Database['public']['Enums']> =
+  Database['public']['Enums'][T];
 
 // Esempi:
 // type ProfileRow = Tables<'profiles'>
@@ -1450,13 +1447,13 @@ export type Enums<T extends keyof Database["public"]["Enums"]> =
 
 ```ts
 // src/lib/supabase/client.ts
-import { createBrowserClient } from "@supabase/ssr";
-import type { Database } from "@/types/database.types";
+import { createBrowserClient } from '@supabase/ssr';
+import type { Database } from '@/types/database.types';
 
 export function createClient() {
   return createBrowserClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
 }
 ```
@@ -1465,20 +1462,20 @@ export function createClient() {
 
 ## 8. Mappa feature → tabelle
 
-| Feature PRD    | Tabelle                                                                            |
-| :------------- | :--------------------------------------------------------------------------------- |
-| Auth + profilo | `auth.users`, `profiles`                                                           |
-| Ferie          | `leave_requests` + saldi su `profiles`                                             |
-| Sprint         | `sprints`, `sprint_stories`                                                        |
-| Time T\&M      | `projects`, `project_members`, `time_entries`                                      |
-| Documenti      | `documents` + Storage `wave-documents`                                             |
-| Daily          | `daily_notes` · `daily_mood_checkins` (La mia marea, self-report)                  |
+| Feature PRD    | Tabelle                                                                                                                                      |
+| :------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| Auth + profilo | `auth.users`, `profiles`                                                                                                                     |
+| Ferie          | `leave_requests` + saldi su `profiles`                                                                                                       |
+| Sprint         | `sprints`, `sprint_stories`                                                                                                                  |
+| Time T\&M      | `projects`, `project_members`, `time_entries`                                                                                                |
+| Documenti      | `documents` + Storage `wave-documents`                                                                                                       |
+| Daily          | `daily_notes` · `daily_mood_checkins` (La mia marea, self-report)                                                                            |
 | Wellbeing Buoy | `daily_mood_checkins` (marea self) · `wellbeing_reports` (boa board) · `burnout_scores`, `burnout_score_history` (segnali) — UI `/wellbeing` |
-| Meeting board  | `meetings`, `meeting_participants`, `meeting_agenda_items`, `meeting_action_items` |
-| Poll           | `polls`, `poll_options`, `poll_votes`                                              |
-| Notifiche      | `notifications`                                                                    |
-| Newsletter     | `newsletter_sends`                                                                 |
-| AI analysis    | `ai_analysis_runs`                                                                 |
+| Meeting board  | `meetings`, `meeting_participants`, `meeting_agenda_items`, `meeting_action_items`                                                           |
+| Poll           | `polls`, `poll_options`, `poll_votes`                                                                                                        |
+| Notifiche      | `notifications`                                                                                                                              |
+| Newsletter     | `newsletter_sends`                                                                                                                           |
+| AI analysis    | `ai_analysis_runs`                                                                                                                           |
 
 ---
 

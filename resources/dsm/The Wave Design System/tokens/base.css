@@ -1,0 +1,28 @@
+/* ============================================================
+   BASE — The Wave
+   Minimal reset + brand defaults. Body ships the dark workspace
+   backdrop and cream text. The .mono helper switches to the
+   Space Mono system voice.
+   ============================================================ */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background: var(--app-bg);
+  color: var(--text-on-dark);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* Reduced-motion: honor OS preference. */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}

@@ -1,0 +1,31 @@
+<!-- @dsCard group="Type" viewport="700x150" name="Families & weights" subtitle="Two families; 800 is the workhorse display weight" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 22px; }
+  .row { display: flex; gap: 20px; }
+  .fam { flex: 1; }
+  .tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .sans { font-family: var(--font-sans); color: var(--cream); font-size: 26px; }
+  .w { display: inline-block; margin-right: 12px; }
+  .mono { font-family: var(--font-mono); color: var(--cream); font-size: 20px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="fam">
+      <div class="tag">Schibsted Grotesk</div>
+      <div class="sans"><span class="w" style="font-weight:400">Aa</span><span class="w" style="font-weight:600">Aa</span><span class="w" style="font-weight:800">Aa</span><span class="w" style="font-weight:900">Aa</span></div>
+      <div class="tag" style="margin-top:6px;color:var(--cream-dim)">400 · 600 · 800 · 900</div>
+    </div>
+    <div class="fam">
+      <div class="tag">Space Mono</div>
+      <div class="mono"><span class="w" style="font-weight:400">Aa</span><span class="w" style="font-weight:700">Aa 0123</span></div>
+      <div class="tag" style="margin-top:6px;color:var(--cream-dim)">400 · 700</div>
+    </div>
+  </div>
+</body>
+</html>
