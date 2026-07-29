@@ -14,15 +14,41 @@ const STORAGE_KEY = 'tide-theme';
 
 const ThemeContext = React.createContext<ThemeContextValue | null>(null);
 
+const listeners = new Set<() => void>();
+
+function emit(): void {
+  listeners.forEach((listener) => listener());
+}
+
 function applyThemeClass(theme: TideTheme): void {
+  if (typeof document === 'undefined') return;
   document.body.classList.remove('theme-dark', 'theme-light');
   document.body.classList.add(theme === 'light' ? 'theme-light' : 'theme-dark');
 }
 
 function readStoredTheme(): TideTheme {
   if (typeof window === 'undefined') return 'dark';
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  return stored === 'light' ? 'light' : 'dark';
+  try {
+    return window.localStorage.getItem(STORAGE_KEY) === 'light' ? 'light' : 'dark';
+  } catch {
+    return 'dark';
+  }
+}
+
+function subscribe(onStoreChange: () => void): () => void {
+  listeners.add(onStoreChange);
+  const onStorage = (event: StorageEvent): void => {
+    if (event.key === STORAGE_KEY || event.key === null) onStoreChange();
+  };
+  window.addEventListener('storage', onStorage);
+  return () => {
+    listeners.delete(onStoreChange);
+    window.removeEventListener('storage', onStorage);
+  };
+}
+
+function getServerSnapshot(): TideTheme {
+  return 'dark';
 }
 
 export function ThemeProvider({
@@ -30,18 +56,16 @@ export function ThemeProvider({
 }: {
   children: React.ReactNode;
 }): React.ReactElement {
-  const [theme, setThemeState] = React.useState<TideTheme>('dark');
-
-  React.useEffect(() => {
-    const initial = readStoredTheme();
-    setThemeState(initial);
-    applyThemeClass(initial);
-  }, []);
+  const theme = React.useSyncExternalStore(subscribe, readStoredTheme, getServerSnapshot);
 
   const setTheme = React.useCallback((next: TideTheme) => {
-    setThemeState(next);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, next);
+    } catch {
+      // ignore quota / private mode
+    }
     applyThemeClass(next);
-    window.localStorage.setItem(STORAGE_KEY, next);
+    emit();
   }, []);
 
   const toggleTheme = React.useCallback(() => {
