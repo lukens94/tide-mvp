@@ -9,7 +9,7 @@ Read the `readme.md` file within this skill, and explore the other available fil
 If creating visual artifacts (slides, mocks, throwaway prototypes, etc), copy assets out and create static HTML files for the user to view. If working on production code, you can copy assets and read the rules here to become an expert in designing with this brand.
 
 Key facts to load first:
-- **Product voice is Italian**, informal and encouraging. Labels/buttons/data are Space Mono UPPERCASE; titles/numbers are Schibsted Grotesk heavy (800).
+- **Product voice is Italian**, informal and encouraging. Labels/buttons/data are IBM Plex Mono UPPERCASE; titles/numbers are Schibsted Grotesk heavy (800).
 - **Palette:** Blue #0057FF (only action color), Black #323232, Cream #FAF7EB (cards), Sand #CDC3BA, Yellow #FFD400 (rare highlight). Dark warm shell (#2A2A28/#363633 on #1F1F1D) with cream content cards.
 - **No gradients, no images, no textures** — flat fills, subtle shadows, generous rounding (cards 22px, controls 12px, chips fully pill).
 - **Icons:** Lucide/Feather stroke style (inline SVG); emoji only in gamification & nav.

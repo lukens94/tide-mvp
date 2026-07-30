@@ -5,7 +5,7 @@ export default function DsmTypographyPage(): React.ReactElement {
   return (
     <DsmShell
       title="Typography"
-      description="Univers LT Pro (display/UI) + Space Mono (voce system, UPPERCASE)."
+      description="Univers LT Pro (display/UI) + IBM Plex Mono (voce system, UPPERCASE)."
     >
       <DsmSection title="Display scale — Univers">
         <div className="space-y-tide-5 text-ink">
@@ -18,7 +18,7 @@ export default function DsmTypographyPage(): React.ReactElement {
         </div>
       </DsmSection>
 
-      <DsmSection title="Mono scale — Space Mono">
+      <DsmSection title="Mono scale — IBM Plex Mono">
         <div className="space-y-tide-4">
           <p className="font-mono text-mono-md font-bold uppercase text-ink">
             Mono md · Buttons / tabs

@@ -108,7 +108,7 @@
   /* Typography */
   --font-sans: 'Univers LT Pro', 'Schibsted Grotesk', Helvetica, Arial, sans-serif;
   --font-cond: 'Univers LT Pro Cond', 'Univers LT Pro', Helvetica, Arial, sans-serif;
-  --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
 
   --text-hero: 92px;
   --text-4xl: 48px;

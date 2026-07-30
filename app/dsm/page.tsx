@@ -45,7 +45,7 @@ export default function DsmFoundationsPage(): React.ReactElement {
           <li>
             <span className="font-mono text-mono-xs uppercase text-ink-muted">Label · </span>
             <span className="font-mono text-mono-md uppercase text-tide-blue">
-              Space Mono · Uppercase
+              IBM Plex Mono · Uppercase
             </span>
           </li>
           <li>

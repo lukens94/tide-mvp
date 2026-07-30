@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import '@fontsource-variable/schibsted-grotesk';
-import '@fontsource/space-mono/400.css';
-import '@fontsource/space-mono/700.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/700.css';
 import { QueryProvider } from '@/components/providers/query-provider';
 import { ThemeProvider, THEME_BOOTSTRAP_SCRIPT } from '@/components/providers/theme-provider';
 import './globals.css';

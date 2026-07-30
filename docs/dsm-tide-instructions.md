@@ -14,7 +14,7 @@ Documento funzionale del Design System di **The Wave**. È il **cuore visuale e 
 
 ### 1.1 Cos’è
 
-Il DSM cattura l’identità prodotto di The Wave: un **workspace dark warm** costruito su card cream (“carta”), azioni blu elettrico e una voce “system” in Space Mono per label e dati.
+Il DSM cattura l’identità prodotto di The Wave: un **workspace dark warm** costruito su card cream (“carta”), azioni blu elettrico e una voce “system” in IBM Plex Mono per label e dati.
 
 Origine: reverse-engineered dal prodotto interno **Storypoints Workspace** (sprint, timesheet, note di progetto, gamification XP/livelli/badge). Nessun documento formale precedente — token, componenti e UI kit sono stati estratti dal CSS e dalla logica di render reali.
 
@@ -60,9 +60,9 @@ Le risorse in `resources/dsm/` **non** fanno parte del bundle Next.js: sono rife
 | Contesto | Regola |
 | :------- | :----- |
 | **Titoli e numeri grandi** | Sentence case, peso heavy (es. “Workspace progetti”, “Nessuno sprint”) |
-| **Label, button, tab, meta** | Space Mono, **UPPERCASE**, letter-spacing ampio (`.08–.14em`) — es. “STORY POINTS PER PROGETTO”, “SPRINT” |
+| **Label, button, tab, meta** | IBM Plex Mono, **UPPERCASE**, letter-spacing ampio (`.08–.14em`) — es. “STORY POINTS PER PROGETTO”, “SPRINT” |
 
-Questa dualità (Univers heavy vs Space Mono uppercase) è la firma tipografica del sistema.
+Questa dualità (Univers heavy vs IBM Plex Mono uppercase) è la firma tipografica del sistema.
 
 ### 2.3 Icone (no emoji)
 
@@ -194,7 +194,7 @@ Fonte: [`tokens/typography.css`](../resources/dsm/The%20Wave%20Design%20System/t
 | :---- | :---- | :---- |
 | `--font-sans` | `'Univers LT Pro', 'Schibsted Grotesk', Helvetica, Arial, sans-serif` | Display + UI |
 | `--font-cond` | `'Univers LT Pro Cond', 'Univers LT Pro', Helvetica, Arial, sans-serif` | Numerali/heading stretti |
-| `--font-mono` | `'Space Mono', ui-monospace, 'SFMono-Regular', monospace` | Voce system (label, button, tab, dati) |
+| `--font-mono` | `'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace` | Voce system (label, button, tab, dati) |
 
 Helper CSS: `.mono { font-family: var(--font-mono); }`.
 
@@ -237,7 +237,7 @@ Token peso:
 | `--text-sm` | `15px` | Body small |
 | `--text-xs` | `13px` | Caption |
 
-### 4.4 Scala mono (Space Mono, UPPERCASE, tracked)
+### 4.4 Scala mono (IBM Plex Mono, UPPERCASE, tracked)
 
 | Token | Size | Uso tipico |
 | :---- | :--- | :--------- |
@@ -265,8 +265,8 @@ Token peso:
 | Titoli pagina / pane | Univers heavy | Sentence case, tracking tight |
 | Contatore SP hero | Univers (o Cond) | `--text-hero`, `--ls-hero` |
 | Body | Univers regular | `--text-md`, `--lh-normal` |
-| Button, tab, select, label form | Space Mono | UPPERCASE + `--ls-label` / `--ls-wide` |
-| Timestamp, meta, hint | Space Mono | UPPERCASE, scale mono-xs/2xs |
+| Button, tab, select, label form | IBM Plex Mono | UPPERCASE + `--ls-label` / `--ls-wide` |
+| Timestamp, meta, hint | IBM Plex Mono | UPPERCASE, scale mono-xs/2xs |
 
 ---
 
@@ -469,7 +469,7 @@ Convenzione ricorrente:
 
 #### Button
 
-Primary (blu, lift on hover) o ghost (testo mono). Sempre Space Mono, UPPERCASE, tracking ampio.
+Primary (blu, lift on hover) o ghost (testo mono). Sempre IBM Plex Mono, UPPERCASE, tracking ampio.
 
 | Prop | Tipo | Default |
 | :--- | :--- | :------ |
@@ -804,7 +804,7 @@ Questo UI kit è il **riferimento end-to-end** di composizione: mostra come shel
 
 1. **Shell** — ogni vista autenticata vive su `--app-bg` / `--panel` con contenuto primario in `Card` cream.
 2. **Azioni** — un solo accent primario (`--blue`). Giallo solo per highlight eccezionale.
-3. **Voce** — titoli Univers heavy sentence-case; controlli e meta in Space Mono UPPERCASE.
+3. **Voce** — titoli Univers heavy sentence-case; controlli e meta in IBM Plex Mono UPPERCASE.
 4. **Form** — usare `FormField` + `light`/`onCream` quando i controlli stanno sulla cream card.
 5. **Feedback** — Toast / ConfirmDialog / EmptyState / Spinner del catalogo; non inventare overlay custom.
 6. **Gamification** — Hero, LevelBadge, StreakPill, Badge, GameStat solo dove il prodotto Tide prevede reward loop (es. wellbeing, streak daily).
@@ -818,7 +818,7 @@ Questo UI kit è il **riferimento end-to-end** di composizione: mostra come shel
 - [ ] Nessun hex fuori dalle tabelle § 3
 - [ ] Nessun gradiente / texture / foto di sfondo
 - [ ] Card di contenuto = cream + `--r-6xl` (22px)
-- [ ] Button/tab/label = Space Mono UPPERCASE
+- [ ] Button/tab/label = IBM Plex Mono UPPERCASE
 - [ ] Titoli = Univers heavy, sentence case
 - [ ] Un solo colore azione: `--blue` / `--blue-2`
 - [ ] Ombre solo dai token § 6.2
@@ -829,7 +829,7 @@ Questo UI kit è il **riferimento end-to-end** di composizione: mostra come shel
 
 ### 10.3 Font e licenza
 
-Univers LT Pro è un font commerciale (Linotype/Monotype). Verificare licenza web prima del deploy. In repo le risorse forniscono OTF in `assets/fonts/`; in produzione preferire `.woff2` licenziati. Space Mono (Google Fonts) è ok per web.
+Univers LT Pro è un font commerciale (Linotype/Monotype). Verificare licenza web prima del deploy. In repo le risorse forniscono OTF in `assets/fonts/`; in produzione preferire `.woff2` licenziati. IBM Plex Mono (Google Fonts) è ok per web.
 
 ### 10.4 Relazione con altri documenti Tide
 
