@@ -2,7 +2,7 @@
    FONTS — The Wave
    Univers LT Pro is THE brand sans (the product code shipped
    Schibsted Grotesk only as a "Univers-like" web stand-in).
-   Space Mono is the system/data voice, served from Google Fonts.
+   IBM Plex Mono is the system/data voice (pairs cleanly with Univers).
 
    Weight mapping (Univers → CSS):
      45 Light  → 300         55 Roman → 400–500
@@ -11,8 +11,8 @@
    display numerals / headings.
    ============================================================ */
 
-/* ---- Space Mono (data / labels) ---- */
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+/* ---- IBM Plex Mono (data / labels) ---- */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
 
 /* ---- Univers LT Pro (brand sans) ---- */
 @font-face {

@@ -26,7 +26,7 @@ No formal design-system doc was provided; tokens, components, and the UI kit wer
 
 **Casing:**
 - **Titles & big numbers** — sentence case, heavy weight (e.g. "Workspace progetti", "Nessuno sprint").
-- **Labels, buttons, tabs, meta** — Space Mono, **UPPERCASE**, wide letter-spacing (e.g. "STORY POINTS PER PROGETTO", "SPRINT", "CALENDARIO ORE"). This is the system's signature move: anything that acts like a machine label is mono + uppercase.
+- **Labels, buttons, tabs, meta** — IBM Plex Mono, **UPPERCASE**, wide letter-spacing (e.g. "STORY POINTS PER PROGETTO", "SPRINT", "CALENDARIO ORE"). This is the system's signature move: anything that acts like a machine label is mono + uppercase.
 
 **Emoji: yes, but scoped.** Emoji are a real part of the brand — but only in the **playful/gamification and navigation** contexts, never in dense data UI. Examples in use:
 - Nav icons: 🎮 Dashboard, 📊 Tracking
@@ -49,7 +49,7 @@ Do **not** put emoji in tables, timesheets, form labels, or metrics.
 
 **Two surface worlds.** The app runs on **dark warm panels** (`#2A2A28` / `#363633` over a `#1F1F1D` backdrop) — but the *content* lives on **cream cards** (`#FAF7EB`, radius 22px). This dark-shell / cream-content contrast is the defining layout motif. A light theme (`body.theme-light`) flips only the dark panels to warm off-whites; cream cards and brand colors stay put.
 
-**Type.** **Univers LT Pro** (the classic Swiss grotesk) for everything display and UI, run heavy (Black / 800–900 is the workhorse weight) with tight negative tracking on headings and the giant 92px SP counter; a condensed cut (`--font-cond`) is available for especially tight numerals. Space Mono for the "system voice" — labels, buttons, tabs, timestamps, hints — always uppercase, letter-spacing .08–.14em.
+**Type.** **Univers LT Pro** (the classic Swiss grotesk) for everything display and UI, run heavy (Black / 800–900 is the workhorse weight) with tight negative tracking on headings and the giant 92px SP counter; a condensed cut (`--font-cond`) is available for especially tight numerals. IBM Plex Mono for the "system voice" — labels, buttons, tabs, timestamps, hints — always uppercase, letter-spacing .08–.14em.
 
 **Backgrounds.** Flat solid colors only. **No gradients, no images, no textures, no patterns.** The blue hero and colored tiles are solid fills. Depth comes from surface layering (panel → panel-2 → cream card), not from shadows or gradients.
 
@@ -93,7 +93,7 @@ Observed icons: hamburger menu, plus, close (×), folder, chevron-down (as CSS b
 - `SKILL.md` — Agent-Skill wrapper for use in Claude Code.
 
 **`tokens/`** — CSS custom properties (all reachable from `styles.css`)
-- `fonts.css` — Univers LT Pro `@font-face` (brand sans, self-hosted OTF) + Space Mono import.
+- `fonts.css` — Univers LT Pro `@font-face` (brand sans, self-hosted OTF) + IBM Plex Mono import.
 - `colors.css` — brand palette, dark surfaces, cream inks, semantic aliases, light-theme scope.
 - `typography.css` — families, type scale, mono label scale, weights, line-heights, tracking.
 - `spacing.css` — 14px-gutter spacing scale + component paddings + sidebar widths.
@@ -116,6 +116,6 @@ Observed icons: hamburger menu, plus, close (×), folder, chevron-down (as CSS b
 
 ## Intentional additions / substitutions
 
-- **Brand sans is Univers LT Pro** (self-hosted OTF in `assets/fonts/`). The product code shipped **Schibsted Grotesk** from Google Fonts only as a "Univers-like" web stand-in (its own CSS comment says so); the real Univers files were later supplied, so Univers is now primary with Schibsted Grotesk kept as the web fallback. **Space Mono** (the data/label voice) is the real font, from Google Fonts.
+- **Brand sans is Univers LT Pro** (self-hosted OTF in `assets/fonts/`). The product code shipped **Schibsted Grotesk** from Google Fonts only as a "Univers-like" web stand-in (its own CSS comment says so); the real Univers files were later supplied, so Univers is now primary with Schibsted Grotesk kept as the web fallback. **IBM Plex Mono** (the data/label voice) is the real font, from Google Fonts.
 - **Icons: Lucide via CDN** substitutes for the product's hand-inlined SVGs, which are drawn in Lucide's exact style. Flagged above.
 - **No logo symbol** was provided beyond the wordmark; none was invented.

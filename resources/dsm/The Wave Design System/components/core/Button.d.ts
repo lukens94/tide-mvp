@@ -10,7 +10,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 /**
- * Primary or ghost action button. Space Mono, uppercase, springy hover/press.
+ * Primary or ghost action button. IBM Plex Mono, uppercase, springy hover/press.
  * @startingPoint section="Core" subtitle="Primary & ghost action buttons" viewport="700x140"
  */
 export function Button(props: ButtonProps): JSX.Element;

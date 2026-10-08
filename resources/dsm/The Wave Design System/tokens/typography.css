@@ -1,7 +1,7 @@
 /* ============================================================
    TYPOGRAPHY — The Wave
    Two families. Schibsted Grotesk carries all display + UI text
-   (heavy weights, tight tracking). Space Mono is the "system"
+   (heavy weights, tight tracking). IBM Plex Mono is the "system"
    voice: labels, data, buttons, timestamps — always UPPERCASE
    with wide letter-spacing.
    ============================================================ */
@@ -10,7 +10,7 @@
   /* ---- Families ---- */
   --font-sans: 'Univers LT Pro', 'Schibsted Grotesk', Helvetica, Arial, sans-serif;
   --font-cond: 'Univers LT Pro Cond', 'Univers LT Pro', Helvetica, Arial, sans-serif;
-  --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
 
   /* ---- Display / UI type scale (Schibsted Grotesk) ---- */
   --text-hero:   92px;    /* the giant SP counter */
@@ -23,7 +23,7 @@
   --text-sm:     15px;
   --text-xs:     13px;
 
-  /* ---- Mono label scale (Space Mono, uppercase, tracked) ---- */
+  /* ---- Mono label scale (IBM Plex Mono, uppercase, tracked) ---- */
   --mono-md:     11.5px;  /* buttons, tabs, field pills */
   --mono-sm:     10.5px;  /* section labels */
   --mono-xs:     10px;    /* hints, captions */

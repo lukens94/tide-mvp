@@ -36,8 +36,8 @@
         "message": "Raw px value — use a design-system spacing token via var()."
       },
       {
-        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Univers LT Pro|Univers LT Pro Cond|Space Mono))/i]",
-        "message": "Font not provided by the design system. Available: Univers LT Pro, Univers LT Pro Cond, Space Mono."
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Univers LT Pro|Univers LT Pro Cond|IBM Plex Mono))/i]",
+        "message": "Font not provided by the design system. Available: Univers LT Pro, Univers LT Pro Cond, IBM Plex Mono."
       },
       {
         "selector": "JSXOpeningElement[name.name='Avatar'] > JSXAttribute > JSXIdentifier[name!=/^(?:src|initials|color|size|ring|title|style|key|ref|className|style|children)$/]",
@@ -562,7 +562,7 @@
       "--dur-bar": "other"
     },
     "fontFamilies": [
-      "Space Mono",
+      "IBM Plex Mono",
       "Univers LT Pro",
       "Univers LT Pro Cond"
     ]
