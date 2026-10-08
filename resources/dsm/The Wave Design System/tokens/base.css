@@ -2,7 +2,7 @@
    BASE — The Wave
    Minimal reset + brand defaults. Body ships the dark workspace
    backdrop and cream text. The .mono helper switches to the
-   Space Mono system voice.
+   IBM Plex Mono system voice.
    ============================================================ */
 
 * { box-sizing: border-box; }

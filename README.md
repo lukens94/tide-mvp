@@ -65,13 +65,13 @@ Product specs live under [`docs/`](docs/INDEX.md):
 | [PRD](docs/prd-tide-mvp.md)                  | Product scope and stack      |
 | [Wireframes](docs/wireframe-page-by-page.md) | Page-by-page UI              |
 | [Schema Supabase](docs/schema-supabase.md)   | DB, RLS, TypeScript types    |
-| [DSM tokens](docs/dsm-tide-instructions.md)  | Design tokens for future DSM |
+| [DSM](docs/dsm-tide-instructions.md)         | Design system — Atomic Design, tokens, `/dsm` |
 
 ---
 
 ## DSM resources (reference only)
 
-These assets live under [`resources/dsm/`](resources/dsm/) and are **not** part of the Next.js app. Use them as reference for the future Tide design system:
+These assets live under [`resources/dsm/`](resources/dsm/) and are **not** part of the Next.js app. They are the source of truth for the Tide design system — see the functional doc [`docs/dsm-tide-instructions.md`](docs/dsm-tide-instructions.md):
 
 - [`Storypoints Workspace.html`](resources/dsm/Storypoints%20Workspace.html)
 - [`The Wave Design System/`](resources/dsm/The%20Wave%20Design%20System/)

@@ -51,8 +51,9 @@ Ordine consigliato per chi arriva da zero:
 | 2   | [PRD — Tide MVP](prd-tide-mvp.md)                            | Spec di prodotto: problema, obiettivi, ruoli, feature map, stack, scope MVP       |
 | 3   | [Wireframe testuale page-by-page](wireframe-page-by-page.md) | UI desktop-first: layout shell, schermate, componenti shadcn, flussi Surfer/Board |
 | 4   | [Schema Supabase SQL + Tipi TypeScript](schema-supabase.md)  | Dati: enum, tabelle, RLS, storage, tipi TS allineati al PRD                       |
-| 5   | [DSM — istruzioni design tokens](dsm-tide-instructions.md)   | Colori, tipografia, shadow, mappatura shadcn/Tailwind                             |
-| 6   | [MVP HTML clickable](../mvp/index.html)                      | Prototipo statico: shell dashboard + tutte le feature Surfer/Board                |
+| 5   | [DSM — Design System](dsm-tide-instructions.md)              | Fonte di verità visuale: Atomic Design, token, componenti, pagina `/dsm`          |
+| 6   | [Gamification — XP, livelli, badge, premi](gamification-tide.md) | Sistema progressione: economia XP, livelli, streak, badge, Tide Coins, negozio premi |
+| 7   | [MVP HTML clickable](../mvp/index.html)                      | Prototipo statico: shell dashboard + tutte le feature Surfer/Board                |
 
 ---
 
@@ -62,7 +63,8 @@ Ordine consigliato per chi arriva da zero:
 | :-------------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Validando nome e tone of voice    | [Naming](nome-mvp-raccomandazione.md)                                                                    |
 | Definendo o sfidando lo scope MVP | [PRD](prd-tide-mvp.md)                                                                                   |
-| Disegnando o implementando UI     | [Wireframe](wireframe-page-by-page.md) · [DSM](dsm-tide-instructions.md) · [MVP HTML](../mvp/index.html) |
+| Disegnando o implementando UI     | [DSM](dsm-tide-instructions.md) · live `/dsm` · [Wireframe](wireframe-page-by-page.md) · [Gamification](gamification-tide.md) · [MVP HTML](../mvp/index.html) |
+| Definendo XP, livelli e premi      | [Gamification](gamification-tide.md) · [PRD](prd-tide-mvp.md) · [Schema](schema-supabase.md) |
 | Impostando DB, auth e permessi    | [Schema Supabase](schema-supabase.md)                                                                    |
 
 ---
